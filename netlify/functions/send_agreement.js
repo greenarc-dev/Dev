@@ -89,6 +89,14 @@ console.log(
     pdfBuffer.slice(0, 10).toString()
 );
 
+const pdfBase64 =
+Buffer.from(pdfBuffer).toString("base64");
+
+console.log(
+    "BASE64 LENGTH:",
+    pdfBase64.length
+);
+
 
         const emailResult =
         await resend.emails.send({
@@ -125,8 +133,7 @@ console.log(
                 ${data.consultantData.mobile}
                 </p>
             `,
-const pdfBase64 =
-Buffer.from(pdfBuffer).toString("base64");
+
 
 attachments: [
   {
@@ -142,13 +149,7 @@ attachments: [
    JSON.stringify(emailResult)
 );
 
-const pdfBase64 =
-Buffer.from(pdfBuffer).toString("base64");
 
-console.log(
-    "BASE64 LENGTH:",
-    pdfBase64.length
-);
 
 return {
 
