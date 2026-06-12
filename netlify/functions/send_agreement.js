@@ -125,10 +125,13 @@ console.log(
                 ${data.consultantData.mobile}
                 </p>
             `,
+const pdfBase64 =
+Buffer.from(pdfBuffer).toString("base64");
+
 attachments: [
   {
     filename: "Consultant_Agreement.pdf",
-     content: pdfBuffer.toString("base64")
+    content: pdfBase64
   }
 ]
 
@@ -139,9 +142,12 @@ attachments: [
    JSON.stringify(emailResult)
 );
 
+const pdfBase64 =
+Buffer.from(pdfBuffer).toString("base64");
+
 console.log(
     "BASE64 LENGTH:",
-    pdfBuffer.toString("base64").length
+    pdfBase64.length
 );
 
 return {
