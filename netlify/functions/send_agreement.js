@@ -128,8 +128,7 @@ console.log(
 attachments: [
   {
     filename: "Consultant_Agreement.pdf",
-    content: pdfBuffer,
-    encoding: "base64"
+     content: pdfBuffer.toString("base64")
   }
 ]
 
@@ -138,6 +137,11 @@ attachments: [
   console.log(
    "EMAIL RESULT:",
    JSON.stringify(emailResult)
+);
+
+console.log(
+    "BASE64 LENGTH:",
+    pdfBuffer.toString("base64").length
 );
 
 return {
