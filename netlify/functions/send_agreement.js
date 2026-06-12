@@ -1,0 +1,158 @@
+const { Resend } = require("resend");
+const chromium = require("@sparticuz/chromium");
+
+exports.handler = async (event) => {
+
+    try {
+
+        const puppeteer =
+        (await import("puppeteer-core")).default;
+
+        const data =
+        JSON.parse(event.body);
+
+        const browser =
+        await puppeteer.launch({
+
+            args:
+            chromium.args,
+
+            executablePath:
+            await chromium.executablePath(),
+
+            defaultViewport:
+            chromium.defaultViewport,
+
+            headless:true
+
+        });
+
+        const page =
+        await browser.newPage();
+
+        aawait page.setContent(
+    data.html,
+    {
+        waitUntil:"networkidle0",
+        timeout:120000
+    }
+);
+
+        await page.emulateMediaType(
+            "print"
+        );
+
+      const pdfBuffer =
+await page.pdf({
+
+    format:"A4",
+
+    printBackground:true,
+
+    preferCSSPageSize:true,
+
+    displayHeaderFooter:false,
+
+    margin:{
+        top:"10mm",
+        right:"10mm",
+        bottom:"10mm",
+        left:"10mm"
+    }
+
+});
+        try {
+
+   // PDF generation and email code
+
+} finally {
+
+   if(browser){
+      await browser.close();
+   }
+
+}
+
+        const resend =
+        new Resend(
+            process.env.Resend
+        );
+
+        await resend.emails.send({
+
+            from:
+            "ceo@greenarchitects.in",
+
+            to:[
+                "ceo@greenarchitects.in",
+                data.consultantData.email
+            ],
+
+            subject:
+            "Consultant Engagement Agreement",
+
+            html:`
+
+                <h2>
+                Consultant Agreement Submitted
+                </h2>
+
+                <p>
+                Name:
+                ${data.consultantData.name}
+                </p>
+
+                <p>
+                Email:
+                ${data.consultantData.email}
+                </p>
+
+                <p>
+                Phone number:
+                ${data.consultantData.mobile}
+                </p>
+            `,
+
+            attachments:[
+
+                {
+
+                    filename:
+                    "Consultant_Agreement.pdf",
+
+                    content:
+                    pdfBuffer.toString("base64")
+
+                }
+
+            ]
+
+        });
+
+        return {
+
+            statusCode:200,
+
+            body:JSON.stringify({
+                success:true
+            })
+
+        };
+
+    } catch(error){
+
+        console.error(error);
+
+        return {
+
+            statusCode:500,
+
+            body:JSON.stringify({
+                error:error.message
+            })
+
+        };
+
+    }
+
+};

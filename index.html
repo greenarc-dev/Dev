@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Consultant Engagement Agreement – Green Architects</title>
+<style>
+
+/* Mobile */
+
+@media screen and (max-width:768px){
+
+    .container{
+        padding:12px;
+    }
+
+    h1{
+        font-size:28px !important;
+    }
+
+    h2{
+        font-size:22px !important;
+    }
+
+    h3{
+        font-size:18px !important;
+    }
+
+    .row{
+        display:block !important;
+    }
+
+    .column{
+        width:100% !important;
+        margin-bottom:15px;
+    }
+
+    button{
+        width:100%;
+        margin-bottom:10px;
+    }
+}
+
+@page{
+    size:A4 portrait;
+    margin:12mm 12mm 12mm 12mm;
+}
+
+/* PRINT / PDF SETTINGS */
+
+@media print{
+
+.party2{
+    margin-top:5px !important;
+    padding:10px 15px !important;
+    font-size:10.5pt !important;
+}
+.party2 .p-row{
+    margin:2px 0 !important;
+}
+
+.party2 .cb-il{
+    font-size:10pt !important;
+    margin-right:6px !important;
+}
+.parties{
+    page-break-inside:avoid !important;
+    break-inside:avoid !important;
+}
+
+.party2{
+    font-size:10.5pt !important;
+}
+
+    .upload-instructions{
+    display:none !important;
+}
+
+input[type="file"]{
+    display:none !important;
+}
+
+label[for="companySignature"]{
+    display:none !important;
+}
+
+label[for="consultantSignature"]{
+    display:none !important;
+}
+
+#companySignaturePreview,
+#consultantSignaturePreview{
+
+    display:block !important;
+    visibility:visible !important;
+
+    max-width:250px !important;
+    max-height:100px !important;
+
+    border:none !important;
+}
+
+#witness1SignaturePreview,
+#witness2SignaturePreview{
+    display:block !important;
+    visibility:visible !important;
+    max-width:250px !important;
+    max-height:100px !important;
+    border:none !important;
+}
+
+
+label[for="witness1Signature"],
+label[for="witness2Signature"]{
+    display:none !important;
+}
+
+    /* Hide placeholder text */
+
+    input::placeholder,
+    textarea::placeholder{
+        color:transparent !important;
+    }
+
+    input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder{
+        color:transparent !important;
+    }
+
+    input::-moz-placeholder,
+    textarea::-moz-placeholder{
+        color:transparent !important;
+    }
+
+    input:-ms-input-placeholder,
+    textarea:-ms-input-placeholder{
+        color:transparent !important;
+    }
+
+    /* Remove borders for cleaner PDF */
+
+    input,
+    textarea,
+    select{
+        border:none !important;
+        outline:none !important;
+        box-shadow:none !important;
+        background:transparent !important;
+    }
+
+    button,
+    .no-print{
+        display:none !important;
+    }
+
+    body{
+        -webkit-print-color-adjust:exact;
+        print-color-adjust:exact;
+    }
+}
+
+body{
+  font-family:Arial, Georgia,'Times New Roman',Times,serif;
+  font-size:14pt !important;
+    line-height:1.25 !important;
+  color:#1a1a1a;
+  background:#cdc7bc;
+  padding:24px 16px 48px;
+}
+
+/* ── PAGE ── */
+
+.sec{
+    page-break-inside:avoid;
+    break-inside:avoid;
+}
+.cb-grp,
+.doc-cat{
+    page-break-inside:avoid;
+    break-inside:avoid;
+}
+
+.sec-hd{
+    page-break-after:avoid;
+}
+
+.sec-hd + *{
+    page-break-before:avoid;
+}
+
+.parties,
+.sec{
+    page-break-inside:avoid;
+}
+
+.page{
+    width:180mm;
+    min-height:257mm;
+    margin:0 auto;
+    background:#fff;
+    padding:10mm;
+    box-sizing:border-box;
+    box-shadow:none !important;
+    border:none !important;
+}
+
+.page-break{
+    page-break-before:always;
+}
+
+
+
+/* watermark */
+.page::before{
+  content:'GREEN ARCHITECTS';
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-35deg);
+  font-size:60pt;
+  font-weight:700;
+  color:rgba(26,61,40,.035);
+  white-space:nowrap;
+  pointer-events:none;
+  letter-spacing:8px;
+  z-index:0;
+   opacity:.08 !important;
+}
+.page > *{position:relative;z-index:1;}
+
+/* ── HEADER ── */
+.hdr{text-align:center;padding-bottom:20px;border-bottom:2.5px double #1a3d28;margin-bottom:26px;}
+.hdr-inner{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:6px;}
+.co-name{font-size:22pt;font-weight:700;color:#1a3d28;letter-spacing:4px;text-transform:uppercase;}
+.co-sub{font-size:8.5pt;color:#3a7a50;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:5px;}
+.co-addr{font-size:12pt;color:#777;font-style:italic; text-align:center;}
+.doc-title{display:inline-block;margin-top:16px;font-size:13pt;font-weight:700;
+  text-transform:uppercase;letter-spacing:2px;color:#1a3d28;
+  border:2px solid #1a3d28;padding:7px 26px;}
+
+/* ── NOTICES ── */
+
+
+/* ── PARTIES BLOCK ── */
+.parties{
+  background:#f5f2eb;
+  border:1px solid #c8b89a;
+  border-left:5px solid #1a3d28;
+  padding:14px 18px;
+  margin:10px 0;
+}
+.p-head{font-size:12pt;font-weight:700;color:#1a3d28;text-transform:uppercase;
+  letter-spacing:1px;margin-bottom:8px;}
+.p-row{margin:5px 0;font-size:12pt;}
+.and-div{text-align:center;font-size:12pt;font-weight:700;color:#1a3d28;margin:14px 0;}
+.intro-text{text-align:center;font-size:10pt;font-style:italic;margin:14px 0 20px;
+  color:#444;line-height:1.7;}
+
+/* ── SECTION BLOCKS ── */
+.sec{margin:22px 0;}
+.sec-hd{background:#1a3d28;color:#fff;padding:6px 15px;font-size:9.5pt;
+  font-weight:700;text-transform:uppercase;letter-spacing:1.2px;
+  margin-bottom:11px;display:flex;align-items:center;justify-content:space-between;}
+.badge{display:inline-block;background:#b8960c;color:#fff;font-size:7pt;
+  padding:2px 7px;border-radius:2px;letter-spacing:.5px;font-weight:700;}
+.sub{margin:7px 0 7px 20px;font-size:11pt;}
+.sub-al{margin:5px 0 5px 38px;font-size:10.5pt;line-height:1.65;}
+.sub-al p{margin:3px 0;}
+
+/* ── INPUTS ── */
+input[type=text],input[type=email],input[type=tel]{
+  border:none;border-bottom:1px dashed #999;outline:none;
+  font-family:Arial, Georgia,'Times New Roman',serif;font-size:12pt;
+  background:transparent;color:#1a1a1a;padding:1px 4px;
+  min-width:100px;vertical-align:baseline;
+}
+input[type=text]:focus,input[type=email]:focus{
+  border-bottom-color:#1a3d28;background:#f0fff5;}
+.fi-xs{min-width:50px;width:55px;}
+.fi-sm{min-width:90px;width:95px;}
+.fi-md{min-width:190px;width:200px;}
+.fi-lg{min-width:310px;width:320px;}
+.fi-xl{min-width:420px;width:440px;}
+.fi-date{min-width:115px;width:120px;}
+
+/* block input */
+.fi-blk{display:block;width:100%;border:none;border-bottom:1px dashed #999;
+  outline:none;font-family:Arial, Georgia,'Times New Roman',serif;font-size:12pt;
+  background:transparent;color:#1a1a1a;padding:2px 4px;margin:3px 0 6px;}
+.fi-blk:focus{border-bottom-color:#1a3d28;background:#f0fff5;}
+
+textarea.fi-blk{border:1px dashed #aaa;border-radius:2px;
+  padding:6px;resize:vertical;min-height:44px;}
+
+/* ── CHECKBOXES ── */
+.cb-grp{margin:8px 0 8px 24px;}
+.cb-it{display:flex;align-items:flex-start;gap:10px;margin:6px 0;cursor:pointer;}
+.cb-it input[type=checkbox]{width:15px;height:15px;margin-top:3px;
+  flex-shrink:0;cursor:pointer;accent-color:#1a3d28;}
+.cb-lbl{font-size:10.5pt;line-height:1.55;}
+.cb-il{display:inline-flex;align-items:center;gap:6px;margin-right:16px;cursor:pointer;}
+.cb-il input{accent-color:#1a3d28;width:14px;height:14px;cursor:pointer;}
+
+/* doc category label */
+.doc-cat{font-size:9.5pt;font-weight:700;color:#3a7a50;text-transform:uppercase;
+  letter-spacing:.5px;margin:13px 0 4px 24px;border-bottom:1px solid #d0e8d8;
+  padding-bottom:3px;}
+
+/* fixed checkboxes (termination causes) */
+.cb-fixed input{pointer-events:none;}
+
+/* ── DIVIDER ── */
+.div{border:none;border-top:1px solid #d5cfbf;margin:18px 0;}
+
+/* ── SIGNATURE AREA ── */
+.signatures,
+.sig-grid,
+.sig-block{
+    page-break-inside:avoid;
+    break-inside:avoid;
+}
+.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;}
+.wit-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:16px;}
+.sig-box{border:1px solid #c8b89a;padding:16px;background:#fafaf4;}
+.sig-ttl{font-weight:700;font-size:9.5pt;color:#1a3d28;text-transform:uppercase;
+  letter-spacing:.5px;border-bottom:1px solid #ccc;padding-bottom:6px;margin-bottom:10px;}
+.sig-lbl{font-size:8.5pt;color:#666;margin:2px 0;}
+.sig-line{border-bottom:1px solid #aaa;height:34px;margin:6px 0 3px;}
+.sig-stamp{height:60px;border:1px dashed #ccc;margin-top:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:8pt;color:#bbb;font-style:italic;}
+
+/* ── FOOTER ── */
+.doc-foot{margin-top:28px;border-top:2px solid #1a3d28;padding-top:12px;
+  text-align:center;font-size:8pt;color:#999;}
+
+/* ── CONTROLS (fixed) ── */
+.controls{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    align-items:center;
+    margin:20px 0;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:all .3s ease;
+    min-width:180px;
+}
+
+.btn-print{
+    background:#2e7d32;
+    color:#fff;
+}
+
+.btn-print:hover{
+    transform:translateY(-2px);
+}
+
+.btn-reset{
+    background:#c62828;
+    color:#fff;
+}
+
+.btn-reset:hover{
+    transform:translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .controls{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+        max-width:350px;
+    }
+}
+
+/* Hide buttons in PDF */
+@media print{
+    .no-print{
+        display:none !important;
+    }
+}
+
+/* ── PRINT ── */
+
+</style>
+</head>
+<body>
+
+
+<div class="page">
+
+<!-- ====== HEADER ====== -->
+<div class="hdr">
+  <div class="hdr-inner" style="justify-content:center;padding:8px 0 4px;">
+    <img src="data:image/jpeg;base64,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QGgwjPLpjFHLbhBBX26Ukupp+gJ67fHw6LY3jU6sns89rs1moLLBUAtldTt9Yg8jtsAB8VnehfJfr1t/E75J6F8l+vW38TvkgIvhGZ3bE5ZRRdnPSzf5tNMN2O9/uK31x1TrjbpqOx2Wgspn/wA2Wnb6x36kbAbH3rK9C+S/Xrb+J3yT0L5L9etv4nfJARnBMyrcRmrJaWkgqnVbA13auI22JO/L4qOGV/nPbt9V/HxjbuO+6sn0L5L9etv4nfJPQvkv162/id8kBr8o1JmyLH3W6vsVCal0Yj876vZzBJbuOW+3itXk+aVl+xy32OooqeGKh4eCRjiXO2bw891JPQvkv162/id8k9C+S/Xrb+J3yQGFZdT6ykx2Ky3KzUN2igaGxOqBvyHTiGxB28VjXvUm73jGaixVlHSdnM7ftIwWljQ4ENa3psNtltvQvkv162/id8k9C+S/Xrb+J3yQEbqc0rZ8EixF1FTimjIImDjxnZ3F06Jas0rLfhVZi0dHA+nqi4umc48beLboOncpJ6F8l+vW38TvknoXyX69bfxO+SAjWJZnWY5Zbla6ajgnjr2lr3yOILN2lvLb4qLqzRovkpIBr7aB48T/AJKX4XpFb7VVR116qW3GeM8TImt2iafE783IDb6KWaez4NB50wsmq3moLT1DTtw7/cN/vU3QchsEQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREB//2Q==" alt="Green Architects – Wings of Creation" style="height:120px;max-width:380px;object-fit:contain;">
+  </div>
+  <div class="co-addr">No. 10, First Cross, Fourth Street, Jai Nagar Extension, Karumandapam, Tiruchirappalli – 620 001, <br>Tamil Nadu, India</br></div>
+  <div><span class="doc-title">Consultant Engagement Agreement</span></div>
+</div>
+
+
+
+<!-- ====== DATE ====== -->
+<!-- ====== PREPARED BY ====== 
+<div style="text-align:center;margin:0 0 20px;padding:10px 20px;border:1px solid #c8b89a;background:#f5f2eb;">
+  <div style="font-size:8pt;color:#777;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">This Document is Prepared by</div>
+  <div style="font-size:11.5pt;font-weight:700;color:#1a3d28;letter-spacing:1px;">MS. IRIN MARIAM P</div>
+  <div style="font-size:9.5pt;color:#3a7a50;font-weight:600;letter-spacing:.5px;">Legal Counsel for Green Architects</div>
+  <div style="font-size:8.5pt;color:#666;font-style:italic;margin-top:2px;">Enrolment No.: M.S.8817/2025</div>
+</div> -->
+
+
+<p style="text-align:center;margin-bottom:6px;">
+  This Consultant Engagement Agreement ("<strong>Agreement</strong>") is executed on this
+  &nbsp;<input type="text" class="fi-xs" placeholder="DD">&nbsp; day of
+  &nbsp;<input type="text" class="fi-md" placeholder="Month, Year">&nbsp;
+</p>
+<p style="text-align:center;font-weight:700;font-size:12pt;margin:14px 0 4px;">BETWEEN</p>
+
+<!-- ====== PARTY 1 ====== -->
+<div class="parties">
+  <div class="p-head">Party 1 &nbsp;—&nbsp; The Company</div>
+  <div class="p-row">
+    <strong>GREEN ARCHITECTS</strong>, a Landscape Consortium
+    <sup style="font-size:7pt;color:#b8960c;" title="Legal Note">†</sup>,
+    having its registered office at No. 10, First Cross, Fourth Street,
+    Jai Nagar Extension, Karumandapam, Tiruchirappalli – 620 001, Tamil Nadu, India.
+  </div>
+  <div class="p-row">
+    <b>PAN</b>: ABAPU9477A;
+    <b>GST No.:</b>33ABAPU9477A1ZL
+  </div>
+  <div class="p-row">
+    <b>Authorised Representative:</b> T JOSEPH VIJU , CEO - Green Architects
+  </div>
+  <div class="p-row">
+    hereinafter referred to as the "<strong>Company</strong>" or "<strong>Green Architects</strong>", which expression shall,
+    unless repugnant to the context, include its successors, legal representatives, and assigns.
+  </div>
+  
+</div>
+
+<div class="and-div">— AND —</div>
+
+<!-- ====== PARTY 2 ====== -->
+<div class="parties party2">
+  <div class="p-head">Party 2 &nbsp;—&nbsp; The Consultant</div>
+  <div class="p-row">
+    Title:&nbsp;
+    <label class="cb-il"><input type="checkbox" name="sal"> Mr.</label>
+    <label class="cb-il"><input type="checkbox" name="sal"> Ms.</label>
+    <label class="cb-il"><input type="checkbox" name="sal"> Dr.</label>
+    <label class="cb-il"><input type="checkbox" name="sal"> Prof.</label>
+    <label class="cb-il"><input type="checkbox" name="sal"> Other: <input type="text" class="fi-sm" placeholder="Title"></label>
+  </div>
+  <div class="p-row">Full Legal Name:&nbsp;<input
+    type="text"
+    id="consultantName"
+    class="fi-xl"
+    placeholder="Full name as per Aadhaar / PAN"></div>
+  <div class="p-row">S/o &nbsp;/ D/o &nbsp;/ W/o:&nbsp;<input type="text" class="fi-lg" placeholder="Parent / Spouse name"></div>
+  <div class="p-row">Residential Address:&nbsp;<input type="text" class="fi-xl" placeholder="Full address with PIN code"></div>
+  <div class="p-row">
+    Qualification:&nbsp;<input type="text" class="fi-lg" placeholder="e.g. B.Arch, M.Sc (Landscape), B.E. (Civil)">
+  </div>
+  <div class="p-row">
+    PAN:&nbsp;<input
+    type="text"
+    id="consultantPAN"
+    class="fi-md"
+    placeholder="XXXXXXXXXX">
+    &nbsp;&nbsp;
+    Aadhaar (last 4 digits):&nbsp;<input type="text" class="fi-xs" placeholder="XXXX">
+  </div>
+  <div class="p-row">
+    GST No.:&nbsp;<input type="text" class="fi-md" placeholder="GSTIN (if registered)">
+    &nbsp;&nbsp;
+    Mobile:&nbsp<input
+    type="text"
+    id="consultantMobile"
+    class="fi-md"
+    placeholder="+91 XXXXX XXXXX">
+  </div>
+  <div class="p-row">
+  Email:&nbsp;
+  <input
+      type="email"
+      id="consultantEmail"
+      class="fi-xl"
+      placeholder="email@domain.com"
+      required>
+</div>
+  <div class="p-row">
+    Consultant Type:&nbsp;
+    <label class="cb-il"><input type="checkbox" name="ct"> Individual Professional</label>
+    <label class="cb-il"><input type="checkbox" name="ct"> Proprietorship Firm</label>
+    <label class="cb-il"><input type="checkbox" name="ct"> Partnership Firm</label>
+    <label class="cb-il"><input type="checkbox" name="ct"> LLP</label>
+    <label class="cb-il"><input type="checkbox" name="ct"> Private Limited Company</label>
+  </div>
+  <div class="p-row">Firm / Company Name (if consulting as an entity):&nbsp;<input type="text" class="fi-xl" placeholder="Firm / Company name, if applicable"></div>
+  <div class="p-row">
+hereinafter referred to as the "<strong>Consultant</strong>", including its legal representatives, successors and permitted assigns.
+</div>
+</div>
+
+<p style="text-align:center;margin:12px 0 6px;font-size:10.5pt;">
+  The Company and the Consultant are collectively referred to as the "<strong>Parties</strong>".
+</p>
+<div class="intro-text">
+  NOW THEREFORE, in consideration of the mutual covenants and obligations contained herein, and other good
+  and valuable consideration — the receipt and sufficiency of which are hereby acknowledged —
+  the Parties agree as follows:
+</div>
+
+<hr class="div">
+
+<!-- ====== SEC 1: APPOINTMENT ====== -->
+<div class="sec">
+  <div class="sec-hd">1. &nbsp;Appointment</div>
+
+  <div class="sub"><strong>1.1</strong>&nbsp; Green Architects hereby appoints the Consultant in the following capacity (select one):</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox" name="role">
+      <span class="cb-lbl"><strong>Senior Consultant</strong> — Lead technical authority, design oversight, and principal advisory responsibilities.</span></label>
+    <label class="cb-it"><input type="checkbox" name="role">
+      <span class="cb-lbl"><strong>Consultant</strong> — Designated professional services in the assigned field of expertise.</span></label>
+    <label class="cb-it"><input type="checkbox" name="role">
+      <span class="cb-lbl"><strong>Associate Consultant</strong> — Supporting role in project execution, documentation, and site coordination.</span></label>
+    <label class="cb-it"><input type="checkbox" name="role">
+      <span class="cb-lbl"><strong>Technical Advisor</strong> — Advisory, review, peer-checking, and quality assurance functions.</span></label>
+  </div>
+
+  <div class="sub"><strong>1.2</strong>&nbsp; The Consultant is engaged in the following field(s) of professional expertise (select all applicable):</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Architecture</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Landscape Architecture</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Horticulture</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Environmental Engineering</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Agricultural Engineering</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Urban and Regional Planning</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Structural / Civil Engineering</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Interior Design</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Soil Science / Agronomy</span></label>
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">Other:&nbsp;<input type="text" class="fi-md" placeholder="Specify field of expertise"></span></label>
+  </div>
+
+  <div class="sub"><strong>1.3</strong>&nbsp; The Consultant accepts this appointment and agrees to provide professional services as and when assigned by Green Architects, subject to terms of this Agreement.</div>
+  <div class="sub"><strong>1.4</strong>&nbsp; This appointment does <em>not</em> create an employer-employee relationship. The engagement shall be construed solely as an independent professional services relationship governed by the Indian Contract Act, 1872. The Consultant has no authority to bind Green Architects contractually unless expressly authorised in writing.</div>
+</div>
+
+<!-- ====== SEC 2: NATURE ====== -->
+<div class="sec">
+  <div class="sec-hd">2. &nbsp;Nature of Engagement</div>
+  <div class="sub"><strong>2.1</strong>&nbsp; The Consultant shall provide professional consultancy, design, supervision, planning, technical evaluation, project execution support, documentation, reporting, site inspection, specification writing, and related services as may be required for projects assigned by Green Architects.</div>
+  <div class="sub"><strong>2.2</strong>&nbsp; The Consultant functions strictly as an <em>Independent Professional Consultant</em>. No fixed salary, retainer, employment benefit, gratuity, provident fund, bonus, insurance, leave encashment, ESI, or other employment entitlement shall be payable under this Agreement.</div>
+  <div class="sub"><strong>2.3</strong>&nbsp; The Consultant shall determine the manner, method, and timing of performing services — subject to agreed deliverables, milestones, and timelines — and shall use their own resources unless otherwise agreed in a Project-Specific Agreement.</div>
+  <div class="sub"><strong>2.4</strong>&nbsp; Where the Consultant issues invoices for services, such invoices shall include applicable GST as per the Goods and Services Tax Act, 2017. The Consultant alone shall be responsible for GST registration (where turnover exceeds the prescribed threshold), compliance, return filing, and remittance to the Government.</div>
+</div>
+
+<!-- ====== SEC 3: PROJECT ASSIGNMENT ====== -->
+<div class="sec">
+  <div class="sec-hd">3. &nbsp;Project Assignment</div>
+  <div class="sub"><strong>3.1</strong>&nbsp; Green Architects may refer and assign projects to the Consultant at its sole discretion. This Agreement does <em>not</em> guarantee the quantum, continuity, or frequency of project assignments.</div>
+  <div class="sub"><strong>3.2</strong>&nbsp; Prior to commencement of any project work — including preparation of any quotation, proposal, commercial offer, design concept, or client negotiation — Green Architects and the Consultant shall execute a separate <strong>Project-Specific Professional Fee Agreement</strong> detailing:</div>
+  <div class="sub-al">
+    <p>(a) Scope of work and specific deliverables;</p>
+    <p>(b) Project timeline and milestone schedule;</p>
+    <p>(c) Professional fees and revenue-sharing arrangement;</p>
+    <p>(d) Payment schedule, conditions, and linked milestones;</p>
+    <p>(e) Client responsibilities and site access arrangements;</p>
+    <p>(f) Applicable quality standards and submission formats;</p>
+    <p>(g) Any project-specific terms, special conditions, or exclusions.</p>
+  </div>
+  <div class="sub"><strong>3.3</strong>&nbsp; No project shall be undertaken, no representation made to any client, and no commitment given on behalf of Green Architects without prior <strong>written authorisation</strong> from an authorised representative of Green Architects.</div>
+  <div class="sub"><strong>3.4</strong>&nbsp; The Engagement Mode for each project shall be specified in the Project-Specific Agreement (for reference, modes may include):</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Design and Documentation only</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Advisory and Peer-Review Role</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Site Supervision and Execution Support</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Full-Service Engagement (Design through Completion)</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Technical Evaluation / Third-Party Assessment</span></label>
+  </div>
+</div>
+
+<!-- ====== SEC 4: FEES ====== -->
+<div class="sec">
+  <div class="sec-hd">4. &nbsp;Professional Fees and Payment</div>
+  <div class="sub"><strong>4.1</strong>&nbsp; Consultant remuneration is strictly project-based. No advance, retainer, or minimum guaranteed payment is assured by this Agreement alone.</div>
+  <div class="sub"><strong>4.2</strong>&nbsp; Professional fees shall be mutually agreed and documented in the Project-Specific Professional Fee Agreement executed prior to commencement of each project.</div>
+  <div class="sub"><strong>4.3</strong>&nbsp; Upon actual receipt of client payment by Green Architects, the Consultant's agreed share shall be released within <strong>fifteen (15) working days</strong> of such receipt, as per the schedule in the Project-Specific Agreement, upon submission of a valid invoice by the Consultant. No payment obligation arises on Green Architects until client funds are actually received.</div>
+  <div class="sub"><strong>4.4</strong>&nbsp; Green Architects shall deduct <strong>Tax Deducted at Source (TDS)</strong> under <strong>Section 194J</strong> of the Income Tax Act, 1961 (Professional and Technical Services) at the prevailing applicable rate (currently <strong>10%</strong> for professional services), or at the rate specified in a valid certificate of lower deduction issued by the Income Tax Department, and shall issue <strong>Form 16A</strong> quarterly.</div>
+  <div class="sub"><strong>4.5</strong>&nbsp; Professional fees quoted in the Project-Specific Agreement shall be (select one):</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox" name="gst_mode"><span class="cb-lbl">Exclusive of GST — GST shall be charged additionally by the Consultant as per applicable rate.</span></label>
+    <label class="cb-it"><input type="checkbox" name="gst_mode"><span class="cb-lbl">Inclusive of all taxes (GST and TDS-grossed basis to be clarified in Project-Specific Agreement).</span></label>
+    <label class="cb-it"><input type="checkbox" name="gst_mode"><span class="cb-lbl">To be specified separately in each Project-Specific Agreement.</span></label>
+  </div>
+  <div class="sub"><strong>4.6</strong>&nbsp; Preferred payment mode (select one):</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox" name="paymode"><span class="cb-lbl">NEFT / RTGS direct bank transfer</span></label>
+    <label class="cb-it"><input type="checkbox" name="paymode"><span class="cb-lbl">Account Payee Cheque</span></label>
+    <label class="cb-it"><input type="checkbox" name="paymode"><span class="cb-lbl">UPI / Instant Payment</span></label>
+  </div>
+  <div class="sub"><strong>4.7</strong>&nbsp; The Consultant shall furnish the following documents for payment processing:</div>
+  <div class="sub-al">
+    <p>(a) Valid PAN Card (mandatory);</p>
+    <p>(b) Bank account details: Account Number, IFSC Code, Bank Name and Branch (Cancelled Cheque);</p>
+    <p>(c) GST Registration Certificate (mandatory if registered);</p>
+    <p>(d) Any other document required under applicable law or internal policy of Green Architects.</p>
+  </div>
+</div>
+
+<!-- ====== SEC 5: INDEPENDENCE ====== -->
+<div class="sec">
+  <div class="sec-hd">5. &nbsp;Professional Independence</div>
+  <div class="sub"><strong>5.1</strong>&nbsp; Subject to restrictions in this Agreement, the Consultant is free to:</div>
+  <div class="sub-al">
+    <p>(a) Operate their own practice, firm, LLP, company, or proprietorship;</p>
+    <p>(b) Accept professional assignments from other clients and organisations;</p>
+    <p>(c) Provide services to other clients independently, provided there is no conflict with this Agreement.</p>
+  </div>
+  <div class="sub"><strong>5.2</strong>&nbsp; Any client introduced, referred, sourced, negotiated, or assigned through Green Architects shall remain the <strong>exclusive business relationship of Green Architects</strong>. The Consultant shall not represent to any such client that they are acting independently of Green Architects.</div>
+  <div class="sub"><strong>5.3</strong>&nbsp; During the term of this Agreement and for a period of <strong>five (5) years</strong> from the date of its termination or expiry, the Consultant shall not — without prior written consent of Green Architects —:</div>
+  <div class="sub-al">
+    <p>(a) Directly solicit, accept, or engage any client referred or introduced by Green Architects for independent professional engagement;</p>
+    <p>(b) Perform services directly for such clients on matters substantially similar to those for which they were engaged through Green Architects;</p>
+    <p>(c) Assist or encourage any such client to terminate or reduce their engagement with Green Architects.</p>
+  </div>
+  
+</div>
+
+<!-- ====== SEC 6: NON-CIRCUMVENTION ====== -->
+<div class="sec">
+  <div class="sec-hd">6. &nbsp;Non-Circumvention</div>
+  <div class="sub"><strong>6.1</strong>&nbsp; The Consultant shall not bypass Green Architects and directly negotiate, contract with, or receive payment from any client introduced, referred, or assigned by Green Architects — during the term of this Agreement and for a period of <strong>five (5) years</strong> after its termination — without prior written consent of Green Architects.</div>
+  <div class="sub"><strong>6.2</strong>&nbsp; Any violation of this Clause shall constitute a <strong>material breach</strong> of this Agreement.</div>
+  <div class="sub"><strong>6.3</strong>&nbsp; In the event of a breach of this Clause, Green Architects shall be entitled to:</div>
+  <div class="sub-al">
+    <p>(a) Immediate termination of this Agreement without notice or compensation to the Consultant;</p>
+    <p>(b) Full recovery of all professional fees earned or received by the Consultant directly from the diverted client;</p>
+    <p>(c) <strong>Liquidated damages</strong> equivalent to the total professional fees that Green Architects would have earned from the relevant project or client relationship — the Parties agreeing this represents a genuine pre-estimate of loss and not a penalty;</p>
+    <p>(d) Injunctive relief, specific performance, and any other legal or equitable remedy available under law.</p>
+  </div>
+</div>
+
+<!-- ====== SEC 7: DOCUMENTS ====== -->
+<div class="sec">
+  <div class="sec-hd">7. &nbsp;Documents to Be Submitted</div>
+  <div class="sub"><strong>7.1</strong>&nbsp; The Consultant shall submit the following self-attested copies to Green Architects prior to commencement of engagement. Please tick each document as submitted:</div>
+
+  <div class="doc-cat">A. &nbsp;Personal Documents</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Recent Passport-Size Photograph (colour, not older than 6 months)</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Aadhaar Card — self-attested photocopy</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">PAN Card — self-attested photocopy &nbsp;<em>(Mandatory for TDS under Section 194J)</em></span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Address Proof (Aadhaar / Passport / Driving Licence / Recent Utility Bill — not older than 3 months)</span></label>
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">Mobile Number:&nbsp;<input type="text" class="fi-md" placeholder="+91 XXXXX XXXXX"></span></label>
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">Email Address:&nbsp;<input type="text" class="fi-md" placeholder="official@email.com"></span></label>
+  </div>
+
+  <div class="doc-cat">B. &nbsp;Educational &amp; Professional Qualification Documents</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Degree Certificate(s) — all relevant professional degrees</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Diploma Certificate(s) (if applicable)</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Professional Membership Certificate(s) — CoA / IIA / ISOLA / IARI / IHort etc. (if applicable)</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Council of Architecture Registration / Other Statutory Registration (if applicable)</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Professional Licences (if applicable)</span></label>
+  </div>
+
+  <div class="doc-cat">C. &nbsp;Professional &amp; Experience Documents</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Updated Curriculum Vitae (CV) — not older than 6 months</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Portfolio of Work (digital PDF or physical, as applicable)</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Experience Certificate(s) from previous employers or clients</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Company / Firm Profile (if consulting as a legal entity)</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Trade Licence (if applicable)</span></label>
+  </div>
+
+  <div class="doc-cat">D. &nbsp;Statutory &amp; Tax Compliance Documents</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">GST Registration Certificate (mandatory if annual turnover from all services exceeds ₹20 lakhs / ₹10 lakhs for Special Category States)</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">MSME / Udyam Registration Certificate (if applicable)</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Professional Indemnity Insurance Policy Details (if available)</span></label>
+  </div>
+
+  <div class="doc-cat">E. &nbsp;Banking Documents</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Cancelled Cheque — clearly showing Account Number, IFSC, and Account Holder Name</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Bank Passbook / Statement (first page) — for NEFT / RTGS purposes</span></label>
+  </div>
+
+  <div class="doc-cat">F. &nbsp;References &amp; Online Presence</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Professional References from Clients / Employers — minimum 2, if available</span></label>
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">LinkedIn Profile URL:&nbsp;<input type="text" class="fi-lg" placeholder="linkedin.com/in/..."></span></label>
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">Professional Website / Portfolio URL:&nbsp;<input type="text" class="fi-lg" placeholder="www.yourwebsite.com"></span></label>
+  </div>
+
+  <div class="sub" style="margin-top:10px;"><strong>7.2</strong>&nbsp; Green Architects reserves the right to request additional documents for background verification or statutory compliance. Submission of false, forged, or misleading documents shall be ground for immediate termination under Clause 15, and may attract civil and criminal liability under applicable law.</div>
+</div>
+
+<!-- ====== SEC 8: CONFIDENTIALITY ====== -->
+<div class="sec">
+  <div class="sec-hd">8. &nbsp;Confidentiality</div>
+  <div class="sub"><strong>8.1</strong>&nbsp; The Consultant shall maintain strict confidentiality and shall not, directly or indirectly, disclose, reproduce, publish, or utilise any Confidential Information received from or through Green Architects, including without limitation:</div>
+  <div class="sub-al">
+    <p>(a) Client names, identities, contact information, and project briefs;</p>
+    <p>(b) Architectural and landscape designs, drawings, concepts, and renders;</p>
+    <p>(c) Project cost estimates, Bills of Quantities (BOQs), and financial data;</p>
+    <p>(d) Technical documents, specifications, reports, and surveys;</p>
+    <p>(e) Commercial terms, fee structures, pricing strategies, and vendor details;</p>
+    <p>(f) Business strategies, client pipelines, and proprietary methodologies;</p>
+    <p>(g) Any information expressly designated as confidential by Green Architects.</p>
+  </div>
+  <div class="sub"><strong>8.2</strong>&nbsp; The confidentiality obligation under this Clause shall continue for a period of <strong>five (5) years</strong> after the termination or expiry of this Agreement. In respect of trade secrets and client identities, the obligation shall be <strong>perpetual</strong> and shall survive indefinitely.</div>
+  <div class="sub"><strong>8.3</strong>&nbsp; The Consultant shall promptly notify Green Architects in writing upon becoming aware of any unauthorised disclosure or breach of confidentiality, and shall cooperate fully in remedial measures.</div>
+  <div class="sub"><strong>8.4</strong>&nbsp; The obligation of confidentiality shall not apply to information that: (a) is or becomes publicly known through no fault of the Consultant; (b) was rightfully known to the Consultant prior to its disclosure by Green Architects; or (c) is required to be disclosed by a court order or applicable law, provided the Consultant gives Green Architects adequate prior written notice and assists in any lawful effort to limit such disclosure.</div>
+</div>
+
+<!-- ====== SEC 9: IP ====== -->
+<div class="sec">
+  <div class="sec-hd">9. &nbsp;Intellectual Property</div>
+  <div class="sub"><strong>9.1</strong>&nbsp; All drawings, designs, reports, documents, specifications, presentations, concepts, models, renders, surveys, plans, and deliverables ("<strong>Works</strong>") created, conceived, or developed by the Consultant in connection with any project referred by Green Architects shall, from the moment of their creation, be the <strong>exclusive property of Green Architects</strong>, and shall be deemed "work made for hire" to the maximum extent permissible under the Copyright Act, 1957.</div>
+  <div class="sub"><strong>9.2</strong>&nbsp; To the extent any Works do not qualify as "work made for hire" under applicable law, the Consultant hereby irrevocably <strong>assigns</strong> all right, title, and interest — including copyright, design rights, and all related intellectual property rights — to Green Architects, with full authority to use, reproduce, modify, commercialise, sublicense, transfer, and protect the same globally and in perpetuity.</div>
+  <div class="sub"><strong>9.3</strong>&nbsp; The Consultant hereby waives, to the fullest extent permissible under law, all moral rights in the Works in favour of Green Architects, including the right of attribution and the right of integrity.</div>
+  <div class="sub"><strong>9.4</strong>&nbsp; The Consultant confirms that the Works shall not infringe the intellectual property rights of any third party. The Consultant shall indemnify Green Architects against any claim arising from such infringement.</div>
+  <div class="sub"><strong>9.5</strong>&nbsp; The Consultant may include completed Works in their personal professional portfolio or CV only after obtaining <strong>prior written approval</strong> from Green Architects, and subject to appropriate credit attribution.</div>
+</div>
+
+<!-- ====== SEC 10: CONDUCT ====== -->
+<div class="sec">
+  <div class="sec-hd">10. &nbsp;Professional Conduct and Warranties</div>
+  <div class="sub"><strong>10.1</strong>&nbsp; The Consultant represents, warrants, and undertakes that they shall at all times:</div>
+  <div class="sub-al">
+    <p>(a) Maintain professional ethics and standards applicable to their discipline and any governing Council / Institute;</p>
+    <p>(b) Comply with all applicable laws, rules, regulations, bye-laws, and professional codes of conduct;</p>
+    <p>(c) Perform all services with reasonable professional skill, care, and diligence commensurate with industry standards;</p>
+    <p>(d) Protect and uphold the professional reputation, goodwill, and brand of Green Architects at all times;</p>
+    <p>(e) Promptly disclose — and take all steps to avoid — any actual or potential conflict of interest;</p>
+    <p>(f) Not engage in any corrupt, dishonest, fraudulent, or coercive conduct in connection with the services or any client;</p>
+    <p>(g) Not make any representation, commitment, or promise to any client on behalf of Green Architects without written authority.</p>
+  </div>
+  <div class="sub"><strong>10.2</strong>&nbsp; The Consultant warrants that they possess all qualifications, licences, registrations, and authorisations required to perform the contracted services under applicable law, and shall maintain such credentials current and valid throughout the engagement.</div>
+  <div class="sub"><strong>10.3</strong>&nbsp; The Consultant confirms they are not currently a party to any agreement — whether of employment, non-compete, or confidentiality — that would prevent or restrict performance of services under this Agreement.</div>
+</div>
+
+<!-- ====== SEC 11: INDEMNIFICATION ====== -->
+<div class="sec">
+  <div class="sec-hd">11. &nbsp;Indemnification </div>
+  <div class="sub"><strong>11.1</strong>&nbsp; The Consultant shall indemnify, defend, and hold harmless Green Architects and its principals, officers, employees, and agents from and against all claims, proceedings, losses, damages, costs (including reasonable legal fees), and liabilities arising from or related to:</div>
+  <div class="sub-al">
+    <p>(a) Any negligence, willful misconduct, fraud, or professional errors or omissions by the Consultant;</p>
+    <p>(b) Breach of any representation, warranty, or obligation under this Agreement;</p>
+    <p>(c) Infringement of any third-party intellectual property rights attributable to the Consultant's work;</p>
+    <p>(d) Non-compliance by the Consultant with applicable laws, tax obligations (including GST), or professional regulatory requirements.</p>
+  </div>
+  <div class="sub"><strong>11.2</strong>&nbsp; Green Architects shall promptly notify the Consultant in writing of any claim for which indemnification may be sought, and shall extend reasonable cooperation in its defence, at the Consultant's cost.</div>
+</div>
+
+<!-- ====== SEC 12: LIMITATION ====== -->
+<div class="sec">
+  <div class="sec-hd">12. &nbsp;Limitation of Liability </div>
+  <div class="sub"><strong>12.1</strong>&nbsp; Notwithstanding any other provision of this Agreement, <strong>Green Architects' aggregate liability</strong> to the Consultant — whether in contract, tort, or otherwise — shall not exceed the total professional fees actually paid to the Consultant in the <strong>six (6) months</strong> immediately preceding the event giving rise to the claim.</div>
+  <div class="sub"><strong>12.2</strong>&nbsp; In no event shall either Party be liable for indirect, incidental, consequential, special, or punitive damages, including loss of profit, loss of business opportunity, or loss of reputation.</div>
+  <div class="sub"><strong>12.3</strong>&nbsp; Nothing in this Clause limits liability for fraud, wilful misconduct, breach of Clause 6 (Non-Circumvention), or death / personal injury caused by negligence.</div>
+</div>
+
+<!-- ====== SEC 13: FORCE MAJEURE ====== -->
+<div class="sec">
+  <div class="sec-hd">13. &nbsp;Force Majeure </div>
+  <div class="sub"><strong>13.1</strong>&nbsp; Neither Party shall be liable for delay or failure to perform obligations under this Agreement to the extent caused by a <strong>Force Majeure Event</strong> — meaning any event beyond that Party's reasonable control, including: Act of God, earthquake, flood, fire, storm, epidemic, pandemic, war, civil unrest, strike (by third parties), government orders, regulatory action, power failure, or internet outage.</div>
+  <div class="sub"><strong>13.2</strong>&nbsp; The affected Party shall notify the other in writing within <strong>five (5) days</strong> of the onset of a Force Majeure Event, specifying its nature and expected duration, and shall use all reasonable efforts to mitigate its effects and resume performance as early as practicable.</div>
+  <div class="sub"><strong>13.3</strong>&nbsp; If a Force Majeure Event continues for more than <strong>ninety (90) consecutive days</strong>, either Party may terminate the affected project or this Agreement upon <strong>fifteen (15) days'</strong> written notice, without further liability for the period of delay — except for amounts already due and payable.</div>
+</div>
+
+<!-- ====== SEC 14: TERM ====== -->
+<div class="sec">
+  <div class="sec-hd">14. &nbsp;Term</div>
+  <div class="sub"><strong>14.1</strong>&nbsp; This Agreement shall commence on the date of its execution by both Parties and shall remain in full force until terminated by either Party in accordance with Clause 15.</div>
+  <div class="sub"><strong>14.2</strong>&nbsp; The Parties may renew or extend this Agreement on the same or revised terms by executing a written addendum signed by both Parties.</div>
+</div>
+
+<!-- ====== SEC 15: TERMINATION ====== -->
+<div class="sec">
+  <div class="sec-hd">15. &nbsp;Termination</div>
+  <div class="sub"><strong>15.1</strong>&nbsp; Either Party may terminate this Agreement by providing <strong>thirty (30) days'</strong> prior written notice to the other Party.</div>
+  <div class="sub"><strong>15.2</strong>&nbsp; During the notice period, the Consultant shall:</div>
+  <div class="sub-al">
+    <p>(a) Complete or advance ongoing assignments to the extent reasonably practicable;</p>
+    <p>(b) Provide complete handover documentation, files, drawings, and project records;</p>
+    <p>(c) Return all property, devices, documents, and Confidential Information belonging to Green Architects.</p>
+  </div>
+  <div class="sub"><strong>15.3</strong>&nbsp; Green Architects may terminate this Agreement with <strong>immediate effect and without notice or compensation</strong> upon occurrence of any of the following (all conditions listed below shall be deemed grounds for immediate termination):</div>
+  <div class="cb-grp cb-fixed">
+    <label class="cb-it"><input type="checkbox" checked disabled><span class="cb-lbl">Misconduct or serious breach of professional ethics</span></label>
+    <label class="cb-it"><input type="checkbox" checked disabled><span class="cb-lbl">Fraud, misrepresentation, dishonesty, or willful concealment</span></label>
+    <label class="cb-it"><input type="checkbox" checked disabled><span class="cb-lbl">Breach of confidentiality obligations under Clause 8</span></label>
+    <label class="cb-it"><input type="checkbox" checked disabled><span class="cb-lbl">Gross professional negligence causing financial or reputational damage to Green Architects</span></label>
+    <label class="cb-it"><input type="checkbox" checked disabled><span class="cb-lbl">Criminal conviction for any offence involving moral turpitude or dishonesty</span></label>
+    <label class="cb-it"><input type="checkbox" checked disabled><span class="cb-lbl">Conflict of interest causing material harm to Green Architects</span></label>
+    <label class="cb-it"><input type="checkbox" checked disabled><span class="cb-lbl">Violation of Non-Circumvention (Clause 6) or Non-Solicitation (Clause 5) obligations</span></label>
+    <label class="cb-it"><input type="checkbox" checked disabled><span class="cb-lbl">Submission of forged, fraudulent, or materially misleading documents</span></label>
+    <label class="cb-it"><input type="checkbox" checked disabled><span class="cb-lbl">Insolvency, bankruptcy, or inability to perform professional obligations</span></label>
+  </div>
+  <div class="sub"><strong>15.4</strong>&nbsp; Upon termination for any reason, Green Architects shall pay the Consultant all professional fees earned in respect of completed milestones up to the effective date of termination, subject to any countervailing claims, deductions, or damages owed by the Consultant. No further payment obligation shall arise in respect of incomplete or future work.</div>
+  <div class="sub"><strong>15.5 Survival.</strong>&nbsp; The following Clauses shall survive and remain binding after termination or expiry of this Agreement: Clauses 5 (Non-Solicitation), 6 (Non-Circumvention), 8 (Confidentiality), 9 (Intellectual Property), 11 (Indemnification), 13 (Force Majeure — payment survival), 20 (Dispute Resolution), and 21 (Governing Law).</div>
+</div>
+
+<!-- ====== SEC 16: NOTICES ====== -->
+<div class="sec">
+  <div class="sec-hd">16. &nbsp;Notices </div>
+  <div class="sub"><strong>16.1</strong>&nbsp; All notices, approvals, consents, and communications required under this Agreement shall be in writing and delivered by:</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Email — with confirmation of receipt or read receipt</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Registered Post / Speed Post / Courier — with acknowledgement of delivery</span></label>
+    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Hand delivery — with written acknowledgement from the recipient</span></label>
+  </div>
+  <div class="sub"><strong>16.2</strong>&nbsp; Notices to Green Architects shall be addressed to:</div>
+  <div class="sub-al">
+    <p>Address: No. 10, First Cross, Fourth Street, Jai Nagar Extension, Karumandapam, Tiruchirappalli – 620 001, Tamil Nadu</p>
+    <p>Email:<a href="mailto:ceo@greenarchitects.in"> ceo@greenarchitects.in</a> <br>Phone:<a href="tel:+919843167999"> +91-9843167999</a></p></br>
+  </div>
+  <div class="sub"><strong>16.3</strong>&nbsp; Notices to the Consultant shall be addressed to the address and email provided in the Party description above, as updated by written notice from time to time.</div>
+</div>
+
+<!-- ====== SEC 17: SEVERABILITY ====== -->
+<div class="sec">
+  <div class="sec-hd">17. &nbsp;Severability </div>
+  <div class="sub">If any provision of this Agreement is held by a competent court or tribunal to be invalid, illegal, or unenforceable under applicable law, that provision shall be modified to the minimum extent necessary to make it valid and enforceable, and the validity and enforceability of all remaining provisions shall not be affected or impaired.</div>
+</div>
+
+<!-- ====== SEC 18: ENTIRE AGREEMENT ====== -->
+<div class="sec">
+  <div class="sec-hd">18. &nbsp;Entire Agreement </div>
+  <div class="sub">This Agreement, together with each Project-Specific Professional Fee Agreement executed hereunder, constitutes the <strong>entire agreement</strong> between the Parties with respect to its subject matter and supersedes all prior negotiations, representations, warranties, understandings, memoranda, letters of intent, and agreements — whether oral or written — between the Parties relating to the same subject.</div>
+</div>
+
+<!-- ====== SEC 19: AMENDMENT ====== -->
+<div class="sec">
+  <div class="sec-hd">19. &nbsp;Amendment </div>
+  <div class="sub">No amendment, modification, or supplement to this Agreement shall be valid or binding unless made <strong>in writing</strong> and duly signed by the authorised representatives of both Parties. Email exchanges shall not constitute an amendment unless confirmed by a formally executed written addendum.</div>
+</div>
+
+<!-- ====== SEC 20: DISPUTE RESOLUTION ====== -->
+<div class="sec">
+  <div class="sec-hd">20. &nbsp;Dispute Resolution</div>
+  <div class="sub"><strong>20.1 Negotiation.</strong>&nbsp; In the event of any dispute, controversy, or claim arising out of or relating to this Agreement — including its breach, termination, or validity — the Parties shall first attempt in good faith to resolve it through direct negotiation within <strong>fifteen (15) days</strong> of written notice of the dispute by one Party to the other.</div>
+  <div class="sub"><strong>20.2 Mediation.</strong>&nbsp; If the dispute is not resolved through negotiation within the said period, the Parties shall attempt resolution through <strong>structured Mediation</strong> before a mutually agreed mediator, within a further period of <strong>fifteen (15) days</strong>. Mediation costs shall be shared equally.</div>
+  <div class="sub"><strong>20.3 Arbitration.</strong>&nbsp; If mediation fails or is refused, the dispute shall be referred to and finally resolved by binding <strong>Arbitration</strong> under the Arbitration and Conciliation Act, 1996 (as amended), on the following terms:</div>
+  <div class="sub-al">
+    <p>
+      (a) Number of Arbitrators (select one):&nbsp;
+      <label class="cb-il"><input type="checkbox" name="arb_no"> Sole Arbitrator</label>
+      <label class="cb-il"><input type="checkbox" name="arb_no"> Panel of Three Arbitrators</label>
+    </p>
+    <p>(b) Seat and Venue of Arbitration:&nbsp;<strong>Tiruchirappalli, Tamil Nadu, India</strong></p>
+    <p>(c) Language of Arbitral Proceedings:&nbsp;<strong>English</strong></p>
+    <p>(d) The arbitral award shall be final and binding on both Parties and enforceable as a decree of court.</p>
+    <p>(e) Each Party shall bear their own legal costs unless the arbitral tribunal directs otherwise.</p>
+  </div>
+</div>
+
+<!-- ====== SEC 21: GOVERNING LAW ====== -->
+<div class="sec">
+  <div class="sec-hd">21. &nbsp;Governing Law and Jurisdiction</div>
+  <div class="sub"><strong>21.1</strong>&nbsp; This Agreement shall be governed by, and construed in accordance with, the laws of the <strong>Republic of India</strong>.</div>
+  <div class="sub"><strong>21.2</strong>&nbsp; For any interim relief, urgent applications, or matters not covered by or prior to arbitration under Clause 20, the courts at <strong>Tiruchirappalli, Tamil Nadu</strong> shall have exclusive jurisdiction.</div>
+</div>
+
+<!-- ====== SEC 22: DECLARATION ====== -->
+<div class="sec">
+  <div class="sec-hd">22. &nbsp;Declaration by Consultant</div>
+  <div class="sub">The Consultant hereby solemnly declares, confirms, and acknowledges the following. Please <strong>tick each declaration</strong> to signify agreement:</div>
+  <div class="cb-grp">
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">All information and documents submitted to Green Architects are true, correct, complete, and not misleading to my knowledge and belief.</span></label>
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">I possess the qualifications, registrations, licences, and credentials stated herein; they are current, valid, and in good standing.</span></label>
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">I understand and accept that this Agreement does not create an employer-employee relationship and I am not entitled to any employment benefits, social security, or statutory entitlements from Green Architects.</span></label>
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">I have read, understood, and agree to be fully bound by all terms and conditions of this Agreement, including the Non-Circumvention, Confidentiality, and Intellectual Property clauses.</span></label>
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">I am not a party to any agreement (employment, NDA, non-compete, or otherwise) that would prevent or restrict my ability to perform services under this Agreement.</span></label>
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">I acknowledge that Green Architects has made no representations or warranties other than those expressly set out in this Agreement.</span></label>
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">I consent to Green Architects retaining, processing, and using my personal data and professional information for the purposes of this engagement and for statutory, regulatory, and tax compliance.</span></label>
+    <label class="cb-it"><input type="checkbox">
+      <span class="cb-lbl">I acknowledge that any breach of Clauses 5, 6, 8, or 9 may cause irreparable harm to Green Architects entitling it to seek immediate injunctive relief, in addition to all other remedies.</span></label>
+  </div>
+</div>
+
+<hr class="div">
+
+<div class="page-break"></div>
+
+<!-- ====== SIGNATURES ====== -->
+<div class="sec">
+  <div class="sec-hd">Execution — Signatures of the Parties</div>
+  <p style="font-size:9.5pt;color:#555;margin-bottom:14px;font-style:italic;">
+    IN WITNESS WHEREOF, the Parties have executed this Agreement on the date first written above, having read and understood all clauses herein.
+  </p>
+
+  <div class="sig-grid">
+    <!-- Company -->
+    <div class="sig-box">
+      <div class="sig-ttl">For Green Architects</div>
+      <div class="sig-lbl">Authorised Signatory — Full Name:</div>
+      <input type="text" class="fi-blk" placeholder="Name of signatory">
+      <div class="sig-lbl">Designation:</div>
+      <input type="text" class="fi-blk" placeholder="Designation / Title">
+      <div class="form-group">
+    <label for="signature">
+         Signature <span style="color:red;">*</span>
+    </label>
+
+    <input
+        type="file"
+        id="companySignature"
+        id="companySignaturePreview"
+        name="signature"
+        accept=".jpg,.jpeg,image/jpeg"
+        required
+    >
+<small class="upload-instructions">
+Upload your handwritten signature in JPG/JPEG format only.
+Maximum file size: 200 KB.
+</small>
+
+    <img
+id="companySignaturePreview"
+style="
+display:none;
+max-width:250px;
+max-height:100px;
+margin-top:10px;
+border:1px solid #ddd;
+padding:5px;
+background:#fff;
+">
+</div>
+
+      <div class="sig-line"></div>
+      <div class="sig-lbl">
+        Date:&nbsp;<input type="text" class="fi-date" placeholder="DD / MM / YYYY">
+        &nbsp;&nbsp;Place:&nbsp;<input type="text" class="fi-sm" placeholder="Trichy">
+      </div>
+      <div class="sig-lbl" style="margin-top:8px;">Official Seal / Rubber Stamp:</div>
+      <div class="sig-stamp">[ Seal / Stamp of Green Architects ]</div>
+    </div>
+
+    <!-- Consultant -->
+    <div class="sig-box">
+      <div class="sig-ttl">Consultant</div>
+      <div class="sig-lbl">Full Name:</div>
+      <input type="text" class="fi-blk" placeholder="Name of Consultant">
+      <div class="sig-lbl">Qualification:</div>
+      <input type="text" class="fi-blk" placeholder="e.g. B.Arch, M.Sc, B.E.">
+     <div class="form-group">
+    <label for="signature">
+        Signature <span style="color:red;">*</span>
+    </label>
+
+    <input
+        type="file"
+        id="consultantSignature"
+        id="consultantSignaturePreview"
+        name="signature"
+        accept=".jpg,.jpeg,image/jpeg"
+        required
+    >
+
+   <small class="upload-instructions">
+Upload your handwritten signature in JPG/JPEG format only.
+Maximum file size: 200 KB.
+</small>
+<img
+id="consultantSignaturePreview"
+style="
+display:none;
+max-width:250px;
+max-height:100px;
+margin-top:10px;
+border:1px solid #ddd;
+padding:5px;
+background:#fff;
+">
+</div>
+      <div class="sig-line"></div>
+      <div class="sig-lbl">
+        Date:&nbsp;<input type="text" class="fi-date" placeholder="DD / MM / YYYY">
+        &nbsp;&nbsp;Place:&nbsp;<input type="text" class="fi-sm" placeholder="City">
+      </div>
+      <div class="sig-lbl" style="margin-top:8px;">Firm / Company Seal (if applicable):</div>
+      <div class="sig-stamp">[ Seal / Stamp of Consultant Firm, if applicable ]</div>
+    </div>
+  </div>
+
+  <!-- Witnesses -->
+  <p style="font-size:9.5pt;font-weight:700;color:#1a3d28;margin:20px 0 6px;text-transform:uppercase;letter-spacing:.5px;">
+    Witnesses (required for legal validity and registration)
+  </p>
+  <div class="wit-grid">
+    <div class="sig-box">
+      <div class="sig-ttl">Witness 1</div>
+      <div class="sig-lbl">Full Name:</div>
+      <input type="text" class="fi-blk" placeholder="Witness 1 Full Name">
+      <div class="sig-lbl">Address:</div>
+      <input type="text" class="fi-blk" placeholder="Witness 1 Full Address">
+      <div class="sig-lbl">Aadhaar / Government ID No.:&nbsp;<input type="text" class="fi-md" placeholder="ID No."></div>
+      <div class="sig-lbl">
+    Signature <span style="color:red;">*</span>
+</div>
+
+<div class="form-group">
+
+<label for="witness1Signature">
+    Signature
+</label>
+
+<input
+    type="file"
+    id="witness1Signature"
+    accept=".jpg,.jpeg,image/jpeg"
+>
+
+<small class="upload-instructions">
+Upload your handwritten signature in JPG/JPEG format only.
+Maximum file size: 200 KB.
+</small>
+
+<img
+id="witness1SignaturePreview"
+style="
+display:none;
+max-width:250px;
+max-height:100px;
+margin-top:10px;
+border:1px solid #ddd;
+padding:5px;
+background:#fff;
+">
+
+</div>
+      <div class="sig-lbl">Date:&nbsp;<input type="text" class="fi-date" placeholder="DD / MM / YYYY"></div>
+    </div>
+    <div class="sig-box">
+      <div class="sig-ttl">Witness 2</div>
+      <div class="sig-lbl">Full Name:</div>
+      <input type="text" class="fi-blk" placeholder="Witness 2 Full Name">
+      <div class="sig-lbl">Address:</div>
+      <input type="text" class="fi-blk" placeholder="Witness 2 Full Address">
+      <div class="sig-lbl">Aadhaar / Government ID No.:&nbsp;<input type="text" class="fi-md" placeholder="ID No."></div>
+     <div class="sig-lbl">
+    Signature <span style="color:red;">*</span>
+</div>
+
+<div class="form-group">
+
+<label for="witness2Signature">
+    Signature
+</label>
+
+<input
+    type="file"
+    id="witness2Signature"
+    accept=".jpg,.jpeg,image/jpeg"
+>
+
+<small class="upload-instructions">
+Upload your handwritten signature in JPG/JPEG format only.
+Maximum file size: 200 KB.
+</small>
+
+<img
+id="witness2SignaturePreview"
+style="
+display:none;
+max-width:250px;
+max-height:100px;
+margin-top:10px;
+border:1px solid #ddd;
+padding:5px;
+background:#fff;
+">
+
+</div>
+      <div class="sig-lbl">Date:&nbsp;<input type="text" class="fi-date" placeholder="DD / MM / YYYY"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="doc-foot">
+  <!-- <em>GREEN ARCHITECTS — Consultant Engagement Agreement — CONFIDENTIAL &amp; PROPRIETARY</em><br>
+  Agreement Reference No.:&nbsp;<input type="text" style="border:none;border-bottom:1px dashed #aaa;outline:none;font-size:8pt;width:160px;background:transparent;color:#888;" placeholder="GA / CEA / ____ / 20__">
+  &nbsp;|&nbsp; --> <span class="pageNumber"></span>
+</div>
+
+<!-- ====== CONTROLS ====== -->
+<div class="controls no-print">
+
+    <button
+        type="button"
+        class="btn btn-submit"
+        onclick="submitAgreement()">
+
+        📧 Submit Agreement
+
+    </button>
+
+    <button
+        type="button"
+        class="btn btn-print"
+        onclick="window.print()">
+
+        🖨 Print / Save PDF
+
+    </button>
+
+    <button
+        type="button"
+        class="btn btn-reset"
+        onclick="resetForm()">
+
+        ↺ Reset Form
+
+    </button>
+
+</div>
+</div><!-- end .page -->
+
+<!-- ====== SCRIPT ====== -->
+
+<script>
+function resetForm(){
+
+    if(confirm("Are you sure you want to reset all fields?")){
+
+        document.querySelectorAll(
+            'input, textarea, select'
+        ).forEach(function(el){
+
+            if(el.type === 'checkbox' || el.type === 'radio'){
+                el.checked = false;
+            }else{
+                el.value = '';
+            }
+
+            document.getElementById(
+'witness1SignaturePreview'
+).style.display='none';
+
+document.getElementById(
+'witness2SignaturePreview'
+).style.display='none';
+
+
+
+document.getElementById(
+'companySignaturePreview'
+).style.display='none';
+
+document.getElementById(
+'consultantSignaturePreview'
+).style.display='none';
+
+        });
+
+    }
+}
+
+
+function setupSignatureUpload(
+    inputId,
+    previewId
+){
+
+    document
+    .getElementById(inputId)
+    .addEventListener('change', function(){
+
+        const file = this.files[0];
+
+        if(!file) return;
+
+        if(file.type !== "image/jpeg"){
+
+            alert(
+            "Only JPG/JPEG files are allowed."
+            );
+
+            this.value = "";
+            return;
+        }
+
+        if(file.size > 204800){
+
+            alert(
+            "Signature image must be less than 200 KB."
+            );
+
+            this.value = "";
+            return;
+        }
+
+        const reader =
+        new FileReader();
+
+        reader.onload = function(e){
+
+            const preview =
+            document.getElementById(
+                previewId
+            );
+
+            preview.src =
+            e.target.result;
+
+            preview.style.display =
+            "block";
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+setupSignatureUpload(
+    "companySignature",
+    "companySignaturePreview"
+);
+
+setupSignatureUpload(
+    "consultantSignature",
+    "consultantSignaturePreview"
+);
+
+setupSignatureUpload(
+    "witness1Signature",
+    "witness1SignaturePreview"
+);
+
+setupSignatureUpload(
+    "witness2Signature",
+    "witness2SignaturePreview"
+);
+
+//radioGroup('sal');       // Title salutation
+//radioGroup('role');      // Consultant role
+//radioGroup('ct');        // Consultant type
+//radioGroup('gst_mode');  // GST mode
+//radioGroup('paymode');   // Payment mode
+//radioGroup('arb_no');    // Arbitrator number
+
+async function submitAgreement(){
+
+    const consultantData = {
+
+    name:
+    document.getElementById(
+    "consultantName"
+    ).value,
+
+    mobile:
+    document.getElementById(
+    "consultantMobile"
+    ).value,
+
+    email:
+    document.getElementById(
+    "consultantEmail"
+    ).value,
+
+    pan:
+    document.getElementById(
+    "consultantPAN"
+    ).value,
+
+};
+const consultantEmail =
+String(
+document.getElementById(
+"consultantEmail"
+).value
+).trim();
+
+
+if(!consultantEmail){
+
+    alert(
+    "Consultant Email is required."
+    );
+
+    return;
+}
+
+const emailPattern =
+/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if(!emailPattern.test(consultantEmail)){
+
+    alert(
+    "Please enter a valid email address."
+    );
+
+    return;
+}
+
+const element =
+document.body;
+
+const htmlContent =
+document.documentElement.outerHTML;
+
+const payload = {
+
+    consultantData,
+
+    html:
+    document.documentElement.outerHTML
+
+};
+
+const response =
+await fetch(
+
+"/.netlify/functions/send_agreement",
+
+{
+    method:"POST",
+
+    headers:{
+        "Content-Type":
+        "application/json"
+    },
+
+    body:
+    JSON.stringify(payload)
+}
+
+);
+
+if(response.ok){
+
+    alert(
+    "Agreement submitted successfully."
+    );
+
+}else{
+
+    const error =
+    await response.text();
+
+    console.log(error);
+
+    alert(
+    "Submission failed."
+    );
+
+}
+
+}
+</script>
+</body>
+</html>
