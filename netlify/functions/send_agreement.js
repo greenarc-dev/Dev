@@ -83,6 +83,11 @@ console.log(
     .toString()
 );
 
+console.log("PDF SIZE:", pdfBuffer.length);
+console.log(
+    "PDF HEADER:",
+    pdfBuffer.slice(0, 10).toString()
+);
 
         await resend.emails.send({
 
@@ -118,11 +123,10 @@ console.log(
                 ${data.consultantData.mobile}
                 </p>
             `,
-
-            attachments: [
+attachments: [
   {
     filename: "Consultant_Agreement.pdf",
-    content: pdfBuffer
+    content: pdfBuffer,
     encoding: "base64"
   }
 ]
