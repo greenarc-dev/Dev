@@ -67,7 +67,7 @@ await browser.close();
 
         const resend =
         new Resend(
-            process.env.Resend
+            process.env.Netlify_Test
         );
 
         await resend.emails.send({
