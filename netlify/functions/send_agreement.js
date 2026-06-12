@@ -30,7 +30,7 @@ exports.handler = async (event) => {
         const page =
         await browser.newPage();
 
-        aawait page.setContent(
+        await page.setContent(
     data.html,
     {
         waitUntil:"networkidle0",
@@ -61,17 +61,9 @@ await page.pdf({
     }
 
 });
-        try {
 
-   // PDF generation and email code
-
-} finally {
-
-   if(browser){
-      await browser.close();
-   }
-
-}
+await browser.close();
+ 
 
         const resend =
         new Resend(
