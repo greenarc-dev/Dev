@@ -128,7 +128,8 @@ console.log(
 attachments: [
   {
     filename: "Consultant_Agreement.pdf",
-    content: pdfBuffer
+    content: pdfBuffer,
+    encoding: "base64"
   }
 ]
 
