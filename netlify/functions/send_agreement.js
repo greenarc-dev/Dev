@@ -89,6 +89,8 @@ console.log(
     pdfBuffer.slice(0, 10).toString()
 );
 
+
+        const emailResult =
         await resend.emails.send({
 
             from:
@@ -132,6 +134,10 @@ attachments: [
 ]
 
         });
+
+        console.log(
+   "EMAIL RESULT:",
+   JSON.stringify(emailResult)
 
         return {
 
