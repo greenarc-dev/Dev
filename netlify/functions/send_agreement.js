@@ -70,6 +70,20 @@ await browser.close();
             process.env.Resend_Test
         );
 
+
+console.log(
+    "PDF bytes:",
+    pdfBuffer.length
+);
+
+console.log(
+    "PDF header:",
+    pdfBuffer
+    .slice(0,20)
+    .toString()
+);
+
+
         await resend.emails.send({
 
             from:
@@ -105,19 +119,13 @@ await browser.close();
                 </p>
             `,
 
-            attachments:[
-
-                {
-
-                    filename:
-                    "Consultant_Agreement.pdf",
-
-                    content:
-                    pdfBuffer.toString("base64")
-
-                }
-
-            ]
+            attachments: [
+  {
+    filename: "Consultant_Agreement.pdf",
+    content: pdfBuffer
+    encoding: "base64"
+  }
+]
 
         });
 
