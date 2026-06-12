@@ -1329,6 +1329,66 @@ if(!emailPattern.test(consultantEmail)){
 const element =
 document.body;
 
+document.querySelectorAll(
+    "input, textarea"
+).forEach(function(el){
+
+    if(
+        el.type !== "file" &&
+        el.type !== "checkbox" &&
+        el.type !== "radio"
+    ){
+
+        el.setAttribute(
+            "value",
+            el.value
+        );
+
+    }
+
+});
+
+
+document.querySelectorAll(
+    "textarea"
+).forEach(function(el){
+
+    el.innerHTML =
+    el.value;
+
+});
+
+
+document.querySelectorAll(
+    'input[type="checkbox"]'
+).forEach(function(el){
+
+    if(el.checked){
+
+        el.setAttribute(
+            "checked",
+            "checked"
+        );
+
+    }else{
+
+        el.removeAttribute(
+            "checked"
+        );
+
+    }
+
+});
+
+
+const printClone =
+document.documentElement.cloneNode(true);
+
+
+console.log(
+    document.documentElement.outerHTML
+);
+
 const htmlContent =
 document.documentElement.outerHTML;
 
