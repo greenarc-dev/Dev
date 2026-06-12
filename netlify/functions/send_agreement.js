@@ -128,27 +128,26 @@ console.log(
 attachments: [
   {
     filename: "Consultant_Agreement.pdf",
-    content: pdfBuffer,
-    encoding: "base64"
+    content: pdfBuffer
   }
 ]
 
         });
 
-        console.log(
+  console.log(
    "EMAIL RESULT:",
    JSON.stringify(emailResult)
+);
 
-        return {
+return {
 
-            statusCode:200,
+    statusCode:200,
 
-            body:JSON.stringify({
-                success:true
-            })
+    body:JSON.stringify({
+        success:true
+    })
 
-        };
-
+};
     } catch(error){
 
         console.error(error);
