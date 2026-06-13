@@ -86,7 +86,7 @@ await browser.close();
 
         const resend =
         new Resend(
-            process.env.CEA_Form
+            process.env.Dev_Key
         );
 
 
