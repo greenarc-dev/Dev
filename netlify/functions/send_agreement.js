@@ -67,7 +67,7 @@ await browser.close();
 
         const resend =
         new Resend(
-            process.env.Resend_Test
+            process.env.CEA_Form
         );
 
 
@@ -110,12 +110,12 @@ console.log(
             ],
 
             subject:
-            "Consultant Engagement Agreement",
+            "Consultant Engagement Agreement - Submission",
 
             html:`
 
                 <h2>
-                Consultant Agreement Submitted
+                Consultant Engagement Agreement 
                 </h2>
 
                 <p>
