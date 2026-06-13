@@ -426,7 +426,7 @@ textarea.fi-blk{border:1px dashed #aaa;border-radius:2px;
 
 <p style="text-align:center;margin-bottom:6px;">
   This Consultant Engagement Agreement ("<strong>Agreement</strong>") <br> is executed on
-  &nbsp;<input type="date" class="fi-date" placeholder="DD/MM/YYYY">&nbsp; </br>               <!--day of
+  &nbsp;<input type="date" class="fi-date" placeholder="DD/MM/YYYY" required>&nbsp; </br>               <!--day of
   &nbsp;<input type="text" class="fi-md" placeholder="Month, Year">&nbsp;
 </p> -->
 <p style="text-align:center;font-weight:700;font-size:12pt;margin:14px 0 4px;">BETWEEN</p>
@@ -468,7 +468,7 @@ textarea.fi-blk{border:1px dashed #aaa;border-radius:2px;
   <div class="p-head">Party 2 &nbsp;—&nbsp; The Consultant</div>
   <div class="p-row">
     Title:&nbsp;
-    <label class="cb-il"><input type="radio" name="sal"> Mr.</label>
+    <label class="cb-il"><input type="radio" name="sal" required> Mr.</label>
     <label class="cb-il"><input type="radio" name="sal"> Ms.</label>
     <label class="cb-il"><input type="radio" name="sal"> Dr.</label>
     <label class="cb-il"><input type="radio" name="sal"> Prof.</label>
@@ -478,33 +478,60 @@ textarea.fi-blk{border:1px dashed #aaa;border-radius:2px;
     type="text"
     id="consultantName"
     class="fi-xl"
-    placeholder="Full name as per Aadhaar / PAN" required></div>
-  <div class="p-row">S/o &nbsp;/ D/o &nbsp;/ W/o:&nbsp;<input type="text" class="fi-lg" placeholder="Parent / Spouse name" required></div>
+    placeholder="Full name as per Aadhaar / PAN"  pattern="[A-Za-z ]+"
+      oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')"required></div>
+
+  <div class="p-row">S/o &nbsp;/ D/o &nbsp;/ W/o:&nbsp;<input type="text" class="fi-lg" placeholder="Parent / Spouse name" pattern="[A-Za-z ]+"
+      oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')" required></div>
   <div class="p-row">Residential Address:&nbsp;<textarea 
-  rows="1" 
+  rows="1" required minlength="10"
+  maxlength="200"
   oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'" 
   style="width: 100%; resize: none; overflow-y: hidden; box-sizing: border-box;" required>
 </textarea></div>
   <div class="p-row">
-    Qualification:&nbsp;<input type="text" class="fi-lg" placeholder="e.g. B.Arch, M.Sc (Landscape), B.E. (Civil)" required>
+    Qualification:&nbsp;<input
+    type="text"
+    class="fi-blk"
+    placeholder="e.g. Ph.D, M.Arch., M.E"
+    required
+    pattern="[A-Za-z.,() ]+"
+    oninput="this.value=this.value.replace(/[^A-Za-z.,() ]/g,'')">
   </div>
   <div class="p-row">
     PAN:&nbsp;<input
     type="text"
     id="consultantPAN"
     class="fi-md"
-    placeholder="XXXXXXXXXX" required>
+    placeholder="ABCDE1234F"
+    required
+    maxlength="10"
+    pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}"
+    oninput="this.value=this.value.toUpperCase()">
     &nbsp;&nbsp;
-    Aadhaar (last 4 digits):&nbsp;<input type="number" class="fi-xs" placeholder="XXXX">
+    Aadhaar (last 4 digits):&nbsp;<input
+    type="text"
+    class="fi-xs"
+    placeholder="XXXX"
+    required
+    maxlength="4"
+    pattern="[0-9]{4}"
+    inputmode="numeric"
+    oninput="this.value=this.value.replace(/\D/g,'')">
   </div>
   <div class="p-row">
     GST No.:&nbsp;<input type="text" class="fi-md" placeholder="GSTIN (if registered)">
     &nbsp;&nbsp;
     Mobile:&nbsp<input
-    type="number"
+    type="tel"
     id="consultantMobile"
     class="fi-md"
-    placeholder="+91 XXXXX XXXXX" required>
+    placeholder="9876543210"
+    required
+    maxlength="10"
+    pattern="[6-9][0-9]{9}"
+    inputmode="numeric"
+    oninput="this.value=this.value.replace(/\D/g,'').slice(0,10)">
   </div>
   <div class="p-row">
   Email:&nbsp;
@@ -517,13 +544,14 @@ textarea.fi-blk{border:1px dashed #aaa;border-radius:2px;
 </div>
   <div class="p-row">
     Consultant Type:&nbsp;
-    <label class="cb-il"><input type="checkbox" name="ct"> Individual Professional</label>
-    <label class="cb-il"><input type="checkbox" name="ct"> Proprietorship Firm</label>
-    <label class="cb-il"><input type="checkbox" name="ct"> Partnership Firm</label>
-    <label class="cb-il"><input type="checkbox" name="ct"> LLP</label>
-    <label class="cb-il"><input type="checkbox" name="ct"> Private Limited Company</label>
+    <label class="cb-il"><input type="radio" name="ct" required> Individual Professional</label>
+    <label class="cb-il"><input type="radio" name="ct"> Proprietorship Firm</label>
+    <label class="cb-il"><input type="radio" name="ct"> Partnership Firm</label>
+    <label class="cb-il"><input type="radio" name="ct"> LLP</label>
+    <label class="cb-il"><input type="radio" name="ct"> Private Limited Company</label>
   </div>
-  <div class="p-row">Firm / Company Name (if consulting as an entity):&nbsp;<input type="text" class="fi-xl" placeholder="Firm / Company name, if applicable"></div>
+  <div class="p-row">Firm / Company Name (if consulting as an entity)&nbsp;<input type="text" class="fi-xl" placeholder="Firm / Company name, if applicable"  pattern="[A-Za-z0-9 ]+"
+    oninput="this.value=this.value.replace(/[^A-Za-z0-9 ]/g,'')"></div>
   <br><div class="p-row">
 hereinafter referred to as the "<strong>Consultant</strong>", including its legal representatives, successors and permitted assigns.
 </div></br>
@@ -546,7 +574,7 @@ hereinafter referred to as the "<strong>Consultant</strong>", including its lega
 
   <div class="sub"><strong>1.1</strong>&nbsp; Green Architects hereby appoints the Consultant in the following capacity (select one):</div>
   <div class="cb-grp">
-    <label class="cb-it"><input type="radio" name="role">
+    <label class="cb-it"><input type="radio" name="role" required>
       <span class="cb-lbl"><strong>Senior Consultant</strong> — Lead technical authority, design oversight, and principal advisory responsibilities.</span></label>
     <label class="cb-it"><input type="radio" name="role">
       <span class="cb-lbl"><strong>Consultant</strong> — Designated professional services in the assigned field of expertise.</span></label>
@@ -558,17 +586,26 @@ hereinafter referred to as the "<strong>Consultant</strong>", including its lega
 
   <div class="sub"><strong>1.2</strong>&nbsp; The Consultant is engaged in the following field(s) of professional expertise (select all applicable):</div>
   <div class="cb-grp">
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Architecture</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Landscape Architecture</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Horticulture</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Environmental Engineering</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Agricultural Engineering</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Urban and Regional Planning</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Structural / Civil Engineering</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Interior Design</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Soil Science / Agronomy</span></label>
-    <label class="cb-it"><input type="checkbox">
-      <span class="cb-lbl">Other:&nbsp;<input type="text" class="fi-md" placeholder="Specify field of expertise"></span></label>
+    <label class="cb-it"><input type="checkbox" name="expertise" ><span class="cb-lbl">Architecture</span></label>
+    <label class="cb-it"><input type="checkbox" name="expertise"><span class="cb-lbl">Landscape Architecture</span></label>
+    <label class="cb-it"><input type="checkbox" name="expertise"><span class="cb-lbl">Horticulture</span></label>
+    <label class="cb-it"><input type="checkbox" name="expertise"><span class="cb-lbl">Environmental Engineering</span></label>
+    <label class="cb-it"><input type="checkbox" name="expertise"><span class="cb-lbl">Agricultural Engineering</span></label>
+    <label class="cb-it"><input type="checkbox" name="expertise"><span class="cb-lbl">Urban and Regional Planning</span></label>
+    <label class="cb-it"><input type="checkbox" name="expertise"><span class="cb-lbl">Structural / Civil Engineering</span></label>
+    <label class="cb-it"><input type="checkbox" name="expertise"><span class="cb-lbl">Interior Design</span></label>
+    <label class="cb-it"><input type="checkbox" name="expertise"><span class="cb-lbl">Soil Science / Agronomy</span></label>
+    <label class="cb-it">
+    <input type="checkbox" name="expertise">
+    <span class="cb-lbl">Other:</span>
+</label>
+
+<input
+type="text"
+class="fi-md"
+placeholder="Specify field of expertise"
+pattern="[A-Za-z ]+"
+    oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')">
   </div>
 
   <div class="sub"><strong>1.3</strong>&nbsp; The Consultant accepts this appointment and agrees to provide professional services as and when assigned by Green Architects, subject to terms of this Agreement.</div>
@@ -601,11 +638,11 @@ hereinafter referred to as the "<strong>Consultant</strong>", including its lega
   <div class="sub"><strong>3.3</strong>&nbsp; No project shall be undertaken, no representation made to any client, and no commitment given on behalf of Green Architects without prior <strong>written authorisation</strong> from an authorised representative of Green Architects.</div>
   <div class="sub"><strong>3.4</strong>&nbsp; The Engagement Mode for each project shall be specified in the Project-Specific Agreement (for reference, modes may include):</div>
   <div class="cb-grp">
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Design and Documentation only</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Advisory and Peer-Review Role</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Site Supervision and Execution Support</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Full-Service Engagement (Design through Completion)</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Technical Evaluation / Third-Party Assessment</span></label>
+    <label class="cb-it"><input type="checkbox"  name="engagementMode" ><span class="cb-lbl">Design and Documentation only</span></label>
+    <label class="cb-it"><input type="checkbox"  name="engagementMode" ><span class="cb-lbl">Advisory and Peer-Review Role</span></label>
+    <label class="cb-it"><input type="checkbox"  name="engagementMode"><span class="cb-lbl">Site Supervision and Execution Support</span></label>
+    <label class="cb-it"><input type="checkbox"  name="engagementMode"><span class="cb-lbl">Full-Service Engagement (Design through Completion)</span></label>
+    <label class="cb-it"><input type="checkbox"  name="engagementMode"><span class="cb-lbl">Technical Evaluation / Third-Party Assessment</span></label>
   </div>
 </div>
 
@@ -618,13 +655,13 @@ hereinafter referred to as the "<strong>Consultant</strong>", including its lega
   <div class="sub"><strong>4.4</strong>&nbsp; Green Architects shall deduct <strong>Tax Deducted at Source (TDS)</strong> under <strong>Section 194J</strong> of the Income Tax Act, 1961 (Professional and Technical Services) at the prevailing applicable rate (currently <strong>10%</strong> for professional services), or at the rate specified in a valid certificate of lower deduction issued by the Income Tax Department, and shall issue <strong>Form 16A</strong> quarterly.</div>
   <div class="sub"><strong>4.5</strong>&nbsp; Professional fees quoted in the Project-Specific Agreement shall be (select one):</div>
   <div class="cb-grp">
-    <label class="cb-it"><input type="radio" name="gst_mode"><span class="cb-lbl">Exclusive of GST — GST shall be charged additionally by the Consultant as per applicable rate.</span></label>
+    <label class="cb-it"><input type="radio" name="gst_mode" required><span class="cb-lbl">Exclusive of GST — GST shall be charged additionally by the Consultant as per applicable rate.</span></label>
     <label class="cb-it"><input type="radio" name="gst_mode"><span class="cb-lbl">Inclusive of all taxes (GST and TDS-grossed basis to be clarified in Project-Specific Agreement).</span></label>
     <label class="cb-it"><input type="radio" name="gst_mode"><span class="cb-lbl">To be specified separately in each Project-Specific Agreement.</span></label>
   </div>
   <div class="sub"><strong>4.6</strong>&nbsp; Preferred payment mode (select one):</div>
   <div class="cb-grp">
-    <label class="cb-it"><input type="radio" name="paymode"><span class="cb-lbl">NEFT / RTGS direct bank transfer</span></label>
+    <label class="cb-it"><input type="radio" name="paymode" required><span class="cb-lbl">NEFT / RTGS direct bank transfer</span></label>
     <label class="cb-it"><input type="radio" name="paymode"><span class="cb-lbl">Account Payee Cheque</span></label>
     <label class="cb-it"><input type="radio" name="paymode"><span class="cb-lbl">UPI / Instant Payment</span></label>
   </div>
@@ -676,21 +713,30 @@ hereinafter referred to as the "<strong>Consultant</strong>", including its lega
   <div class="sub"><strong>7.1</strong>&nbsp; The Consultant shall submit the following self-attested copies to Green Architects prior to commencement of engagement. Please tick each document as submitted:</div>
 
   <div class="doc-cat">A. &nbsp;Personal Documents</div>
-  <div class="cb-grp">
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Recent Passport-Size Photograph (colour, not older than 6 months)</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Aadhaar Card — self-attested photocopy</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">PAN Card — self-attested photocopy &nbsp;<em>(Mandatory for TDS under Section 194J)</em></span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Address Proof (Aadhaar / Passport / Driving Licence / Recent Utility Bill — not older than 3 months)</span></label>
+  <div class="cb-grp" id="personalDocuments">
+    <label class="cb-it"><input type="checkbox" class="personalDoc"><span class="cb-lbl">Recent Passport-Size Photograph (colour, not older than 6 months)</span></label>
+    <label class="cb-it"><input type="checkbox" class="personalDoc"><span class="cb-lbl">Aadhaar Card — self-attested photocopy</span></label>
+    <label class="cb-it"><input type="checkbox" class="personalDoc"><span class="cb-lbl">PAN Card — self-attested photocopy &nbsp;<em>(Mandatory for TDS under Section 194J)</em></span></label>
+    <label class="cb-it"><input type="checkbox" class="personalDoc"><span class="cb-lbl">Address Proof (Aadhaar / Passport / Driving Licence / Recent Utility Bill — not older than 3 months)</span></label>
+    <label class="cb-it"><input type="checkbox" class="personalDoc">
+      <span class="cb-lbl">Mobile Number:&nbsp;<input
+    type="tel"
+    id="consultantMobile"
+    class="fi-md"
+    placeholder="9876543210"
+    required
+    maxlength="10"
+    pattern="[6-9][0-9]{9}"
+    inputmode="numeric"
+    oninput="this.value=this.value.replace(/\D/g,'').slice(0,10)"></span></label>
     <label class="cb-it"><input type="checkbox">
-      <span class="cb-lbl">Mobile Number:&nbsp;<input type="text" class="fi-md" placeholder="+91 XXXXX XXXXX"></span></label>
-    <label class="cb-it"><input type="checkbox">
-      <span class="cb-lbl">Email Address:&nbsp;<input type="text" class="fi-md" placeholder="official@email.com"></span></label>
+      <span class="cb-lbl">Email Address:&nbsp;<input type="mail" class="fi-md" placeholder="official@email.com" required></span></label>
   </div>
 
   <div class="doc-cat">B. &nbsp;Educational &amp; Professional Qualification Documents</div>
   <div class="cb-grp">
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Degree Certificate(s) — all relevant professional degrees</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Diploma Certificate(s) (if applicable)</span></label>
+    <label class="cb-it"><input type="checkbox" class="eduDoc"> <span class="cb-lbl">Degree/Diploma Certificate(s) — all relevant professional degrees/Diploma's</span></label>
+    
     <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Professional Membership Certificate(s) — CoA / IIA / ISOLA / IARI / IHort etc. (if applicable)</span></label>
     <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Council of Architecture Registration / Other Statutory Registration (if applicable)</span></label>
     <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Professional Licences (if applicable)</span></label>
@@ -698,7 +744,7 @@ hereinafter referred to as the "<strong>Consultant</strong>", including its lega
 
   <div class="doc-cat">C. &nbsp;Professional &amp; Experience Documents</div>
   <div class="cb-grp">
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Updated Curriculum Vitae (CV) — not older than 6 months</span></label>
+    <label class="cb-it"><input type="checkbox" class="expDoc"><span class="cb-lbl">Updated Curriculum Vitae (CV) — not older than 6 months</span></label>
     <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Portfolio of Work (digital PDF or physical, as applicable)</span></label>
     <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Experience Certificate(s) from previous employers or clients</span></label>
     <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Company / Firm Profile (if consulting as a legal entity)</span></label>
@@ -714,17 +760,27 @@ hereinafter referred to as the "<strong>Consultant</strong>", including its lega
 
   <div class="doc-cat">E. &nbsp;Banking Documents</div>
   <div class="cb-grp">
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Cancelled Cheque — clearly showing Account Number, IFSC, and Account Holder Name</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Bank Passbook / Statement (first page) — for NEFT / RTGS purposes</span></label>
+    <label class="cb-it"><input type="checkbox" name="bankDoc"><span class="cb-lbl">Cancelled Cheque — clearly showing Account Number, IFSC, and Account Holder Name</span></label>
+    <label class="cb-it"><input type="checkbox" name="bankDoc"><span class="cb-lbl">Bank Passbook / Statement (first page) — for NEFT / RTGS purposes</span></label>
   </div>
 
   <div class="doc-cat">F. &nbsp;References &amp; Online Presence</div>
   <div class="cb-grp">
     <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Professional References from Clients / Employers — minimum 2, if available</span></label>
     <label class="cb-it"><input type="checkbox">
-      <span class="cb-lbl">LinkedIn Profile URL:&nbsp;<input type="text" class="fi-lg" placeholder="linkedin.com/in/..."></span></label>
+      <span class="cb-lbl">LinkedIn Profile URL:&nbsp;<input
+    type="url"
+    class="fi-lg"
+    placeholder="https://linkedin.com/in/username"
+    pattern="https?:\/\/(www\.)?linkedin\.com\/.*"
+    oninput="this.value=this.value.trim()"></span></label>
     <label class="cb-it"><input type="checkbox">
-      <span class="cb-lbl">Professional Website / Portfolio URL:&nbsp;<input type="text" class="fi-lg" placeholder="www.yourwebsite.com"></span></label>
+      <span class="cb-lbl">Professional Website / Portfolio URL:&nbsp;<input
+    type="url"
+    class="fi-lg"
+    placeholder="https://www.yourwebsite.com"
+    pattern="https?:\/\/.*"
+    oninput="this.value=this.value.trim()"></span></label>
   </div>
 
   <div class="sub" style="margin-top:10px;"><strong>7.2</strong>&nbsp; Green Architects reserves the right to request additional documents for background verification or statutory compliance. Submission of false, forged, or misleading documents shall be ground for immediate termination under Clause 15, and may attract civil and criminal liability under applicable law.</div>
@@ -842,9 +898,9 @@ hereinafter referred to as the "<strong>Consultant</strong>", including its lega
   <div class="sec-hd">16. &nbsp;Notices </div>
   <div class="sub"><strong>16.1</strong>&nbsp; All notices, approvals, consents, and communications required under this Agreement shall be in writing and delivered by:</div>
   <div class="cb-grp">
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Email — with confirmation of receipt or read receipt</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Registered Post / Speed Post / Courier — with acknowledgement of delivery</span></label>
-    <label class="cb-it"><input type="checkbox"><span class="cb-lbl">Hand delivery — with written acknowledgement from the recipient</span></label>
+    <label class="cb-it"><input type="radio"><span class="cb-lbl">Email — with confirmation of receipt or read receipt</span></label>
+    <label class="cb-it"><input type="radio"><span class="cb-lbl">Registered Post / Speed Post / Courier — with acknowledgement of delivery</span></label>
+    <label class="cb-it"><input type="radio"><span class="cb-lbl">Hand delivery — with written acknowledgement from the recipient</span></label>
   </div>
   <div class="sub"><strong>16.2</strong>&nbsp; Notices to Green Architects shall be addressed to:</div>
   <div class="sub-al">
@@ -881,7 +937,7 @@ hereinafter referred to as the "<strong>Consultant</strong>", including its lega
   <div class="sub-al">
     <p>
       (a) Number of Arbitrators (select one):&nbsp;
-      <label class="cb-il"><input type="radio" name="arb_no"> Sole Arbitrator</label>
+      <label class="cb-il"><input type="radio" name="arb_no" required> Sole Arbitrator</label>
       <label class="cb-il"><input type="radio" name="arb_no"> Panel of Three Arbitrators</label>
     </p>
     <p>(b) Seat and Venue of Arbitration:&nbsp;<strong>Tiruchirappalli, Tamil Nadu, India</strong></p>
@@ -903,21 +959,21 @@ hereinafter referred to as the "<strong>Consultant</strong>", including its lega
   <div class="sec-hd">22. &nbsp;Declaration by Consultant</div>
   <div class="sub">The Consultant hereby solemnly declares, confirms, and acknowledges the following. Please <strong>tick each declaration</strong> to signify agreement:</div>
   <div class="cb-grp">
-    <label class="cb-it"><input type="checkbox">
+    <label class="cb-it"><input type="checkbox" class="consultantDeclaration">
       <span class="cb-lbl">All information and documents submitted to Green Architects are true, correct, complete, and not misleading to my knowledge and belief.</span></label>
-    <label class="cb-it"><input type="checkbox">
+    <label class="cb-it"><input type="checkbox" class="consultantDeclaration">
       <span class="cb-lbl">I possess the qualifications, registrations, licences, and credentials stated herein; they are current, valid, and in good standing.</span></label>
-    <label class="cb-it"><input type="checkbox">
+    <label class="cb-it"><input type="checkbox" class="consultantDeclaration">
       <span class="cb-lbl">I understand and accept that this Agreement does not create an employer-employee relationship and I am not entitled to any employment benefits, social security, or statutory entitlements from Green Architects.</span></label>
-    <label class="cb-it"><input type="checkbox">
+    <label class="cb-it"><input type="checkbox" class="consultantDeclaration">
       <span class="cb-lbl">I have read, understood, and agree to be fully bound by all terms and conditions of this Agreement, including the Non-Circumvention, Confidentiality, and Intellectual Property clauses.</span></label>
-    <label class="cb-it"><input type="checkbox">
+    <label class="cb-it"><input type="checkbox" class="consultantDeclaration">
       <span class="cb-lbl">I am not a party to any agreement (employment, NDA, non-compete, or otherwise) that would prevent or restrict my ability to perform services under this Agreement.</span></label>
-    <label class="cb-it"><input type="checkbox">
+    <label class="cb-it"><input type="checkbox" class="consultantDeclaration">
       <span class="cb-lbl">I acknowledge that Green Architects has made no representations or warranties other than those expressly set out in this Agreement.</span></label>
-    <label class="cb-it"><input type="checkbox">
+    <label class="cb-it"><input type="checkbox" class="consultantDeclaration">
       <span class="cb-lbl">I consent to Green Architects retaining, processing, and using my personal data and professional information for the purposes of this engagement and for statutory, regulatory, and tax compliance.</span></label>
-    <label class="cb-it"><input type="checkbox">
+    <label class="cb-it"><input type="checkbox" class="consultantDeclaration">
       <span class="cb-lbl">I acknowledge that any breach of Clauses 5, 6, 8, or 9 may cause irreparable harm to Green Architects entitling it to seek immediate injunctive relief, in addition to all other remedies.</span></label>
   </div>
 </div>
@@ -938,48 +994,31 @@ hereinafter referred to as the "<strong>Consultant</strong>", including its lega
     <div class="sig-box">
       <div class="sig-ttl">For Green Architects</div>
       <div class="sig-lbl">Authorised Signatory — Full Name:</div>
-      <input type="text" class="fi-blk" placeholder="Name of signatory">
+      <div class="sig-ttl">
+    T JOSEPH VIJU
+  </div>
+      
       <div class="sig-lbl">Designation:</div>
-      <input type="text" class="fi-blk" placeholder="Designation / Title">
-      <div class="form-group">
+      <div class="sig-ttl">
+    CEO
+  </div>
+      
+      <div class="sig-lbl"> 
     <label for="signature">
-         Signature <span style="color:red;">*</span>
+         Signature 
     </label>
 
-    <input
-        type="file"
-        id="companySignature"
-        id="companySignaturePreview"
-        name="signature"
-        accept=".jpg,.jpeg,image/jpeg"
-        required
-    >
-<small class="upload-instructions">
-Upload your handwritten signature in JPG/JPEG format only.
-Maximum file size: 200 KB.
-</small>
+    
+</div> 
 
-    <img
-id="companySignaturePreview"
-style="
-display:none;
-max-width:250px;
-max-height:100px;
-margin-top:10px;
-border:1px solid #ddd;
-padding:5px;
-background:#fff;
-">
-</div>
-
-      <div class="sig-line"></div>
+      <br><div class="sig-line"></div> </br>
       <div class="sig-lbl">
-        Date:&nbsp;<input type="date" class="fi-date" placeholder="DD / MM / YYYY">
-        &nbsp;&nbsp; <br>Place:&nbsp;<input type="text" class="fi-sm" placeholder="City"></br>
+        Date:&nbsp;<input type="date" class="fi-date" placeholder="Consultant Fill this date" required>
+        &nbsp;&nbsp; <div><br>Place: <b>Tiruchirappalli </b></br> </div>
       </div>
-      <div class="sig-lbl" style="margin-top:8px;">Official Seal / Rubber Stamp:</div>
-      <div class="sig-stamp">[ Seal / Stamp of Green Architects ]</div>
-    </div>
+      <!--div class="sig-lbl" style="margin-top:8px;">Official Seal / Rubber Stamp:</div>
+      <div class="sig-stamp">[ Seal / Stamp of Green Architects ]</div> -->
+    </div> 
 
     <!-- Consultant -->
     <div class="sig-box">
@@ -988,7 +1027,7 @@ background:#fff;
       <input type="text" class="fi-blk" placeholder="Name of Consultant">
       <div class="sig-lbl">Qualification:</div>
       <input type="text" class="fi-blk" placeholder="e.g. B.Arch, M.Sc, B.E.">
-     <div class="form-group">
+     <div class="sig-lbl">
     <label for="signature">
         Signature <span style="color:red;">*</span>
     </label>
@@ -1018,15 +1057,18 @@ padding:5px;
 background:#fff;
 ">
 </div>
-      <div class="sig-line"></div>
-      <div class="sig-lbl">
-        Date:&nbsp;<input type="date" class="fi-date" placeholder="DD / MM / YYYY">
-        &nbsp;&nbsp; <br> Place:&nbsp;<input type="text" class="fi-sm" placeholder="City"></br>
+      <div class="sig-line"></div> 
+     <br> <div class="sig-lbl">
+        Date:&nbsp;<input type="date" class="fi-date" placeholder="DD / MM / YYYY"> </br>
+        &nbsp;&nbsp; <br> Place:&nbsp;<input type="text" class="fi-sm" placeholder="City" required
+    pattern="[A-Za-z ]+"
+    oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')"></br>
       </div>
-      <div class="sig-lbl" style="margin-top:8px;">Firm / Company Seal (if applicable):</div>
-      <div class="sig-stamp">[ Seal / Stamp of Consultant Firm, if applicable ]</div>
+      <!-- <div class="sig-lbl" style="margin-top:8px;">Firm / Company Seal (if applicable):</div>
+      <div class="sig-stamp">[ Seal / Stamp of Consultant Firm, if applicable ]</div> -->
     </div>
   </div>
+
 
   <!-- Witnesses -->
   <p style="font-size:9.5pt;font-weight:700;color:#1a3d28;margin:20px 0 6px;text-transform:uppercase;letter-spacing:.5px;">
@@ -1036,28 +1078,53 @@ background:#fff;
     <div class="sig-box">
       <div class="sig-ttl">Witness 1</div>
       <div class="sig-lbl">Full Name:</div>
-      <input type="text" class="fi-blk" placeholder="Witness 1 Full Name">
+      <input type="text" class="fi-blk" placeholder="Witness 1 Full Name" required
+    pattern="[A-Za-z ]+"
+    oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')">
       <div class="sig-lbl">Address:</div>
-      <textarea 
-  rows="1" 
-  oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'" 
-  style="width: 100%; resize: none; overflow-y: hidden; box-sizing: border-box;">
+      <textarea
+  required
+  minlength="10"
+  maxlength="200"
+  rows="1"
+  placeholder="Enter complete address"
+  oninput="
+    this.value=this.value.replace(/[^A-Za-z0-9\s,./()#-]/g,'');
+    this.style.height='';
+    this.style.height=this.scrollHeight+'px';
+  "
+  style="width:100%;resize:none;overflow-y:hidden;box-sizing:border-box;">
 </textarea>
-      <div class="sig-lbl">Aadhaar / Government ID No.:&nbsp;<input type="number" class="fi-md" placeholder="ID No."></div>
+
+<div class="sig-lbl">Government ID Type:</div>
+<input type="text" class="fi-blk" list="id-types" placeholder="Select or type Government ID" required>
+
+<datalist id="id-types">
+    <option value="Aadhar Card"></option>
+    <option value="PAN Card"></option>
+    <option value="Passport"></option>
+    <option value="Voter ID"></option>
+    <option value="Driving Licence"></option>
+</datalist>
+
+
+      <div class="sig-lbl">Government ID No.:&nbsp;<input
+    type="text"
+    class="fi-md"
+    placeholder="ID No."
+    required
+    maxlength="25"
+    oninput="this.value=this.value.replace(/[^A-Za-z0-9-]/g,'')"></div>
       <div class="sig-lbl">
-    Signature <span style="color:red;">*</span>
-</div>
+    <label for="signature">
+        Signature <span style="color:red;">*</span>
+    </label>
 
-<div class="form-group">
-
-<label for="witness1Signature">
-    Signature
-</label>
 
 <input
     type="file"
     id="witness1Signature"
-    accept=".jpg,.jpeg,image/jpeg"
+    accept=".jpg,.jpeg,image/jpeg" required
 >
 
 <small class="upload-instructions">
@@ -1078,33 +1145,57 @@ background:#fff;
 ">
 
 </div>
-      <div class="sig-lbl">Date:&nbsp;<input type="date" class="fi-date" placeholder="DD / MM / YYYY"></div>
+      <div class="sig-lbl">Date:&nbsp;<input type="date" class="fi-date" placeholder="DD / MM / YYYY" required></div>
     </div>
     <div class="sig-box">
       <div class="sig-ttl">Witness 2</div>
       <div class="sig-lbl">Full Name:</div>
-      <input type="text" class="fi-blk" placeholder="Witness 2 Full Name">
+      <input type="text" class="fi-blk" placeholder="Witness 2 Full Name" required
+    pattern="[A-Za-z ]+"
+    oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')">
       <div class="sig-lbl">Address:</div>
-      <textarea 
-  rows="1" 
-  oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'" 
-  style="width: 100%; resize: none; overflow-y: hidden; box-sizing: border-box;">
+      <textarea
+  required
+  minlength="10"
+  maxlength="200"
+  rows="1"
+  placeholder="Enter complete address"
+  oninput="
+    this.value=this.value.replace(/[^A-Za-z0-9\s,./()#-]/g,'');
+    this.style.height='';
+    this.style.height=this.scrollHeight+'px';
+  "
+  style="width:100%;resize:none;overflow-y:hidden;box-sizing:border-box;">
 </textarea>
-      <div class="sig-lbl">Aadhaar / Government ID No.:&nbsp;<input type="number" class="fi-md" placeholder="ID No."></div>
-     <div class="sig-lbl">
-    Signature <span style="color:red;">*</span>
-</div>
 
-<div class="form-group">
+<div class="sig-lbl">Government ID Type:</div>
+<input type="text" class="fi-blk" list="id-types" placeholder="Select or type Government ID" required>
 
-<label for="witness2Signature">
-    Signature
-</label>
+<datalist id="id-types">
+    <option value="Aadhar Card"></option>
+    <option value="PAN Card"></option>
+    <option value="Passport"></option>
+    <option value="Voter ID"></option>
+    <option value="Driving Licence"></option>
+</datalist>
+
+      <div class="sig-lbl">Government ID No.:&nbsp;<input
+    type="text"
+    class="fi-md"
+    placeholder="ID No."
+    required
+    maxlength="25"
+    oninput="this.value=this.value.replace(/[^A-Za-z0-9-]/g,'')"></div>
+    <div class="sig-lbl">
+    <label for="signature">
+        Signature <span style="color:red;">*</span>
+    </label>
+
 
 <input
     type="file"
     id="witness2Signature"
-    accept=".jpg,.jpeg,image/jpeg"
+    accept=".jpg,.jpeg,image/jpeg" required
 >
 
 <small class="upload-instructions">
@@ -1125,7 +1216,7 @@ background:#fff;
 ">
 
 </div>
-      <div class="sig-lbl">Date:&nbsp;<input type="date" class="fi-date" placeholder="DD / MM / YYYY"></div>
+      <div class="sig-lbl">Date:&nbsp;<input type="date" class="fi-date" placeholder="DD / MM / YYYY" required></div>
     </div>
   </div>
 </div>
@@ -1141,23 +1232,13 @@ background:#fff;
 <div class="controls no-print">
 
     <button
-        type="button"
-        class="btn btn-submit"
-        onclick="submitAgreement()">
-
+        type="submit"
+        class="btn btn-submit">
         📧 Submit Agreement
 
     </button>
 
-    <button
-        type="button"
-        class="btn btn-print"
-        onclick="validateAndPrint()">
-
-        🖨 Print / Save PDF
-
-    </button>
-
+  
     <button
         type="button"
         class="btn btn-reset"
@@ -1167,32 +1248,13 @@ background:#fff;
 
     </button>
 
-</div>
-</div></form><!-- end .page -->
+</div></form>
+</div><!-- end .page -->
 
 <!-- ====== SCRIPT ====== -->
 
 <script>
 
-
-
-    function validateAndPrint(){
-
-    const form = document.getElementById('consultantForm');
-
-    if(!form.checkValidity()){
-
-        form.reportValidity();
-
-        alert(
-            "Please complete all mandatory fields before printing or submitting."
-        );
-
-        return;
-    }
-
-    window.print();
-}
 
 
 
@@ -1220,9 +1282,7 @@ document.getElementById(
 
 
 
-document.getElementById(
-'companySignaturePreview'
-).style.display='none';
+
 
 document.getElementById(
 'consultantSignaturePreview'
@@ -1290,10 +1350,7 @@ function setupSignatureUpload(
 
 }
 
-setupSignatureUpload(
-    "companySignature",
-    "companySignaturePreview"
-);
+
 
 setupSignatureUpload(
     "consultantSignature",
@@ -1310,12 +1367,12 @@ setupSignatureUpload(
     "witness2SignaturePreview"
 );
 
-radioGroup('sal');       // Title salutation
-radioGroup('role');      // Consultant role
-radioGroup('ct');        // Consultant type
-radioGroup('gst_mode');  // GST mode
-radioGroup('paymode');   // Payment mode
-radioGroup('arb_no');    // Arbitrator number
+//radioGroup('sal');       // Title salutation
+//radioGroup('role');      // Consultant role
+//radioGroup('ct');        // Consultant type
+//radioGroup('gst_mode');  // GST mode
+//radioGroup('paymode');   // Payment mode
+//radioGroup('arb_no');    // Arbitrator number
 
 
 
@@ -1525,11 +1582,9 @@ const payload = {
 
 };
 
-showLoader();
 
-document.querySelector(
-'.btn-submit'
-).disabled = true;
+
+
 
 try{
 
@@ -1595,6 +1650,214 @@ try{
 }
 
 }
+
+
+document
+.getElementById("consultantForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    console.log("Form submitted");
+
+    /* First run normal HTML validation */
+
+    if(!this.checkValidity()){
+
+        this.reportValidity();
+        return;
+    }
+
+    /* Then check expertise */
+
+    const expertiseSelected =
+    document.querySelectorAll(
+        'input[name="expertise"]:checked'
+    );
+
+    console.log(
+        "Expertise selected:",
+        expertiseSelected.length
+    );
+
+    if(expertiseSelected.length === 0){
+
+        alert(
+        "Please select at least one Professional Expertise."
+        );
+
+        document.querySelector(
+        'input[name="expertise"]'
+        ).scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+        return;
+    }
+
+
+    const engagementModeSelected =
+document.querySelectorAll(
+    'input[name="engagementMode"]:checked'
+);
+
+if(engagementModeSelected.length === 0){
+
+    alert(
+    "Please select at least one Engagement Mode."
+    );
+
+    document.querySelector(
+    'input[name="engagementMode"]'
+    ).scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+    return;
+}
+
+const personalDocs =
+document.querySelectorAll(
+'.personalDoc'
+);
+
+const allPersonalDocsChecked =
+Array.from(personalDocs)
+.every(cb => cb.checked);
+
+if(!allPersonalDocsChecked){
+
+    alert(
+    "Please confirm all Personal Documents have been provided."
+    );
+
+    document.getElementById(
+    "personalDocuments"
+    ).scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+    return;
+}
+
+
+if(
+!document.querySelector(
+'.eduDoc'
+).checked
+){
+    alert(
+    "Please confirm submission of Degree Certificate(s)."
+    );
+    return;
+}
+
+
+const expDocs =
+document.querySelectorAll(
+'.expDoc'
+);
+
+if(
+!Array.from(expDocs)
+.every(cb => cb.checked)
+){
+    alert(
+    "Please confirm submission of CV and Portfolio."
+    );
+    return;
+}
+
+const bankDocs =
+document.querySelectorAll(
+'input[name="bankDoc"]:checked'
+);
+
+if(bankDocs.length === 0){
+
+    alert(
+    "Please select at least one Banking Document."
+    );
+
+    document.querySelector(
+    'input[name="bankDoc"]'
+    ).scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+    return;
+}
+
+
+const declarations =
+document.querySelectorAll(
+'.consultantDeclaration'
+);
+
+const allDeclarationsAccepted =
+Array.from(declarations)
+.every(cb => cb.checked);
+
+if(!allDeclarationsAccepted){
+
+    alert(
+    "Please accept all Consultant Declarations."
+    );
+
+    document.querySelector(
+    '.consultantDeclaration'
+    ).scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+    return;
+}
+
+
+const spamDomains = [
+    "bit.ly",
+    "tinyurl.com",
+    "goo.gl",
+    "t.co",
+    "shorturl"
+];
+
+document.querySelectorAll(
+'input[type="url"]'
+).forEach(field => {
+
+    const value =
+    field.value.toLowerCase();
+
+    if(
+        spamDomains.some(
+            domain =>
+            value.includes(domain)
+        )
+    ){
+
+        alert(
+        "Shortened URLs are not allowed. Please provide the original website URL."
+        );
+
+        field.focus();
+
+        throw new Error(
+        "Spam URL blocked"
+        );
+    }
+});
+
+    submitAgreement();
+
+});
+
+
 </script>
 
 <!-- Loading Overlay -->

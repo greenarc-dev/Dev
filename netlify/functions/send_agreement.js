@@ -11,6 +11,20 @@ exports.handler = async (event) => {
         const data =
         JSON.parse(event.body);
 
+
+        // Validate again server-side
+
+    if(!data.consultantName){
+
+        return {
+            statusCode:400,
+            body:JSON.stringify({
+                message:"Missing fields"
+            })
+        };
+    }
+    
+
         const browser =
         await puppeteer.launch({
 
