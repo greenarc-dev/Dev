@@ -426,7 +426,25 @@ textarea.fi-blk{border:1px dashed #aaa;border-radius:2px;
 
 <p style="text-align:center;margin-bottom:6px;">
   This Consultant Engagement Agreement ("<strong>Agreement</strong>") <br> is executed on
-  &nbsp;<input type="date" class="fi-date" placeholder="DD/MM/YYYY" required>&nbsp; </br>               <!--day of
+  &nbsp;<input
+    type="date"
+    class="fi-date"
+    id="agreementDate"
+    required
+    max="">
+    
+<script>
+document.getElementById(
+    "agreementDate"
+).max =
+new Date()
+.toISOString()
+.split("T")[0];
+</script>&nbsp; </br>               
+
+
+
+<!--day of
   &nbsp;<input type="text" class="fi-md" placeholder="Month, Year">&nbsp;
 </p> -->
 <p style="text-align:center;font-weight:700;font-size:12pt;margin:14px 0 4px;">BETWEEN</p>
@@ -474,22 +492,30 @@ textarea.fi-blk{border:1px dashed #aaa;border-radius:2px;
     <label class="cb-il"><input type="radio" name="sal"> Prof.</label>
     <label class="cb-il"><input type="radio" name="sal"> Other: <input type="text" class="fi-sm" placeholder="Title"></label>
   </div>
-  <div class="p-row">Full Legal Name:&nbsp;<input
+  <br> <div class="p-row">Full Legal Name:&nbsp;<input
     type="text"
     id="consultantName"
     class="fi-xl"
     placeholder="Full name as per Aadhaar / PAN"  pattern="[A-Za-z ]+"
-      oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')"required></div>
-
-  <div class="p-row">S/o &nbsp;/ D/o &nbsp;/ W/o:&nbsp;<input type="text" class="fi-lg" placeholder="Parent / Spouse name" pattern="[A-Za-z ]+"
+      oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')"required></div> </br>
+  <div class="p-row">
+    <label class="cb-il"><input type="radio" name="sal" required>S/O</label>
+    <label class="cb-il"><input type="radio" name="sal"> D/O</label>
+    <label class="cb-il"><input type="radio" name="sal"> W/O</label>
+    <label class="cb-il"><input type="radio" name="sal"> C/O</label>
+    <input type="text" class="fi-lg" placeholder="Parent / Spouse / Caretaker name" pattern="[A-Za-z ]+"
       oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')" required></div>
-  <div class="p-row">Residential Address:&nbsp;<textarea 
+
+
+  <br><div class="p-row">Residential Address:&nbsp;<textarea 
   rows="1" required minlength="10"
   maxlength="200"
   oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'" 
   style="width: 100%; resize: none; overflow-y: hidden; box-sizing: border-box;" required>
-</textarea></div>
-  <div class="p-row">
+</textarea></div></br>
+
+
+ <div class="p-row">
     Qualification:&nbsp;<input
     type="text"
     class="fi-blk"
@@ -497,8 +523,8 @@ textarea.fi-blk{border:1px dashed #aaa;border-radius:2px;
     required
     pattern="[A-Za-z.,() ]+"
     oninput="this.value=this.value.replace(/[^A-Za-z.,() ]/g,'')">
-  </div>
-  <div class="p-row">
+  </div> 
+  <br><div class="p-row">
     PAN:&nbsp;<input
     type="text"
     id="consultantPAN"
@@ -518,7 +544,7 @@ textarea.fi-blk{border:1px dashed #aaa;border-radius:2px;
     pattern="[0-9]{4}"
     inputmode="numeric"
     oninput="this.value=this.value.replace(/\D/g,'')">
-  </div>
+  </div></br>
   <div class="p-row">
     GST No.:&nbsp;<input type="text" class="fi-md" placeholder="GSTIN (if registered)">
     &nbsp;&nbsp;
@@ -533,7 +559,7 @@ textarea.fi-blk{border:1px dashed #aaa;border-radius:2px;
     inputmode="numeric"
     oninput="this.value=this.value.replace(/\D/g,'').slice(0,10)">
   </div>
-  <div class="p-row">
+ <br> <div class="p-row">
   Email:&nbsp;
   <input
       type="email"
@@ -541,7 +567,7 @@ textarea.fi-blk{border:1px dashed #aaa;border-radius:2px;
       class="fi-xl"
       placeholder="email@domain.com"
       required>
-</div>
+</div></br>
   <div class="p-row">
     Consultant Type:&nbsp;
     <label class="cb-il"><input type="radio" name="ct" required> Individual Professional</label>
@@ -550,8 +576,8 @@ textarea.fi-blk{border:1px dashed #aaa;border-radius:2px;
     <label class="cb-il"><input type="radio" name="ct"> LLP</label>
     <label class="cb-il"><input type="radio" name="ct"> Private Limited Company</label>
   </div>
-  <div class="p-row">Firm / Company Name (if consulting as an entity)&nbsp;<input type="text" class="fi-xl" placeholder="Firm / Company name, if applicable"  pattern="[A-Za-z0-9 ]+"
-    oninput="this.value=this.value.replace(/[^A-Za-z0-9 ]/g,'')"></div>
+<br>  <div class="p-row">Firm / Company Name (if consulting as an entity)&nbsp;<input type="text" class="fi-xl" placeholder="Firm / Company name, if applicable"  pattern="[A-Za-z0-9 ]+"
+    oninput="this.value=this.value.replace(/[^A-Za-z0-9 ]/g,'')"></div> </br>
   <br><div class="p-row">
 hereinafter referred to as the "<strong>Consultant</strong>", including its legal representatives, successors and permitted assigns.
 </div></br>
@@ -1013,7 +1039,21 @@ pattern="[A-Za-z ]+"
 
       <br><div class="sig-line"></div> </br>
       <div class="sig-lbl">
-        Date:&nbsp;<input type="date" class="fi-date" placeholder="Consultant Fill this date" required>
+        Date:&nbsp;<input
+    type="date"
+    class="fi-date"
+    id="CompanyDate"
+    required
+    max="">
+    
+<script>
+document.getElementById(
+    "CompanyDate"
+).max =
+new Date()
+.toISOString()
+.split("T")[0];
+</script>
         &nbsp;&nbsp; <div><br>Place: <b>Tiruchirappalli </b></br> </div>
       </div>
       <!--div class="sig-lbl" style="margin-top:8px;">Official Seal / Rubber Stamp:</div>
@@ -1026,7 +1066,7 @@ pattern="[A-Za-z ]+"
       <div class="sig-lbl">Full Name:</div>
       <input type="text" class="fi-blk" placeholder="Name of Consultant">
       <div class="sig-lbl">Qualification:</div>
-      <input type="text" class="fi-blk" placeholder="e.g. B.Arch, M.Sc, B.E.">
+      <input type="text" class="fi-blk" placeholder="e.g. Ph.D, M.Arch., M.E">
      <div class="sig-lbl">
     <label for="signature">
         Signature <span style="color:red;">*</span>
@@ -1059,7 +1099,21 @@ background:#fff;
 </div>
       <div class="sig-line"></div> 
      <br> <div class="sig-lbl">
-        Date:&nbsp;<input type="date" class="fi-date" placeholder="DD / MM / YYYY"> </br>
+        Date:&nbsp;<input
+    type="date"
+    class="fi-date"
+    id="consultantDate"
+    required
+    max="">
+    
+<script>
+document.getElementById(
+    "consultantDate"
+).max =
+new Date()
+.toISOString()
+.split("T")[0];
+</script> </br>
         &nbsp;&nbsp; <br> Place:&nbsp;<input type="text" class="fi-sm" placeholder="City" required
     pattern="[A-Za-z ]+"
     oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')"></br>
@@ -1145,7 +1199,21 @@ background:#fff;
 ">
 
 </div>
-      <div class="sig-lbl">Date:&nbsp;<input type="date" class="fi-date" placeholder="DD / MM / YYYY" required></div>
+      <div class="sig-lbl">Date:&nbsp;<input
+    type="date"
+    class="fi-date"
+    id="witness1Date"
+    required
+    max="">
+    
+<script>
+document.getElementById(
+    "witness1Date"
+).max =
+new Date()
+.toISOString()
+.split("T")[0];
+</script></div>
     </div>
     <div class="sig-box">
       <div class="sig-ttl">Witness 2</div>
@@ -1216,7 +1284,21 @@ background:#fff;
 ">
 
 </div>
-      <div class="sig-lbl">Date:&nbsp;<input type="date" class="fi-date" placeholder="DD / MM / YYYY" required></div>
+      <div class="sig-lbl">Date:&nbsp;<input
+    type="date"
+    class="fi-date"
+    id="witness2Date"
+    required
+    max="">
+    
+<script>
+document.getElementById(
+    "witness2Date"
+).max =
+new Date()
+.toISOString()
+.split("T")[0];
+</script></div>
     </div>
   </div>
 </div>
