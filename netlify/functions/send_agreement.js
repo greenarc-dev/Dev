@@ -15,7 +15,21 @@ exports.handler = async (event) => {
 "RECEIVED DATA:",
 JSON.stringify(data,null,2)
 );
+const submittedAt =
+new Date().toLocaleString(
+    "en-IN",
+    {
+        timeZone:"Asia/Kolkata",
+        dateStyle:"long",
+        timeStyle:"medium"
+    }
+);
 
+const ipAddress =
+event.headers["x-forwarded-for"] ||
+event.headers["client-ip"] ||
+event.headers["x-nf-client-connection-ip"] ||
+"Not Available";
 
         // Validate again server-side
 
@@ -135,35 +149,116 @@ console.log(
 
             subject:
             "Consultant Engagement Agreement - Submission",
+html: `
 
-            html:`
+<div style="
+font-family:Arial,sans-serif;
+max-width:700px;
+margin:auto;
+">
 
-                <h2>
-                Consultant Engagement Agreement 
-                </h2>
+<h2 style="
+margin-bottom:10px;
+color:#1f4d3a;
+">
+Consultant Engagement Agreement Submission
+</h2>
 
-                <p>
-                Name:
-                ${data.consultantData.name}
-                </p>
+<p>
+A new Consultant Engagement Agreement has been submitted successfully.
+</p>
 
-                <p>
-                Email:
-                ${data.consultantData.email}
-                </p>
+<table
+style="
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+font-size:14px;
+">
 
-                <p>
-                Phone number:
-                ${data.consultantData.mobile}
-                </p>
-            `,
+<tr>
+<td style="border:1px solid #ccc;padding:8px;font-weight:bold;">
+Consultant Name
+</td>
+<td style="border:1px solid #ccc;padding:8px;">
+${data.consultantData.name || "-"}
+</td>
+</tr>
 
+<tr>
+<td style="border:1px solid #ccc;padding:8px;font-weight:bold;">
+Email Address
+</td>
+<td style="border:1px solid #ccc;padding:8px;">
+${data.consultantData.email || "-"}
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ccc;padding:8px;font-weight:bold;">
+Mobile Number
+</td>
+<td style="border:1px solid #ccc;padding:8px;">
+${data.consultantData.mobile || "-"}
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ccc;padding:8px;font-weight:bold;">
+PAN Number
+</td>
+<td style="border:1px solid #ccc;padding:8px;">
+${data.consultantData.pan || "-"}
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ccc;padding:8px;font-weight:bold;">
+Place
+</td>
+<td style="border:1px solid #ccc;padding:8px;">
+${data.consultantData.place || "-"}
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ccc;padding:8px;font-weight:bold;">
+Submission Date & Time
+</td>
+<td style="border:1px solid #ccc;padding:8px;">
+${submittedAt}
+</td>
+</tr>
+
+<tr>
+<td style="border:1px solid #ccc;padding:8px;font-weight:bold;">
+IP Address
+</td>
+<td style="border:1px solid #ccc;padding:8px;">
+${ipAddress}
+</td>
+</tr>
+
+</table>
+
+<p style="
+margin-top:20px;
+font-size:13px;
+color:#666;
+">
+This email was generated automatically by the Green Architects Consultant Engagement Agreement System.
+</p>
+
+</div>
+
+`,
 
 attachments: [
-  {
-    filename: "Consultant_Agreement.pdf",
+{
+    filename:
+    `Consultant_Engagement_Agreement_${data.consultantData.name.replace(/\s+/g,"_")}.pdf`,
     content: pdfBase64
-  }
+}
 ]
 
         });
