@@ -1417,6 +1417,9 @@ async function submitAgreement(){
     ).value,
 
 };
+
+
+
 const consultantEmail =
 String(
 document.getElementById(
@@ -1445,6 +1448,8 @@ if(!emailPattern.test(consultantEmail)){
 
     return;
 }
+
+
 
 const element =
 document.body;
@@ -1580,10 +1585,7 @@ const payload = {
     html:
     document.documentElement.outerHTML
 
-    consultantData.place =
-document.getElementById(
-"consultantPlace"
-).value;
+
 
 };
 
