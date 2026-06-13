@@ -11,6 +11,11 @@ exports.handler = async (event) => {
         const data =
         JSON.parse(event.body);
 
+        console.log(
+"RECEIVED DATA:",
+JSON.stringify(data,null,2)
+);
+
 
         // Validate again server-side
 
