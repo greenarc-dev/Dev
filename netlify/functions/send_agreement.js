@@ -14,15 +14,20 @@ exports.handler = async (event) => {
 
         // Validate again server-side
 
-    if(!data.consultantName){
+    if(
+    !data.consultantData ||
+    !data.consultantData.name ||
+    !data.consultantData.email ||
+    !data.consultantData.mobile
+){
 
-        return {
-            statusCode:400,
-            body:JSON.stringify({
-                message:"Missing fields"
-            })
-        };
-    }
+    return {
+        statusCode:400,
+        body:JSON.stringify({
+            message:"Missing required fields"
+        })
+    };
+}
     
 
         const browser =
